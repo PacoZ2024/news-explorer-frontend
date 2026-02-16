@@ -1,12 +1,16 @@
 {
   "name": "news-explorer-frontend",
+  "author": {
+    "name": "P@co Z",
+    "email": "pacosclub@gmail.com"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "npx eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
