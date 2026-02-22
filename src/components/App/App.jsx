@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from '../Main/Main.jsx';
+import Header from '../Header/Header.jsx';
 import SavedNews from '../SavedNews/SavedNews.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 export default function App() {
   return (

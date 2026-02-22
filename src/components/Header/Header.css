@@ -1,5 +1,52 @@
 .header {
-  background-color: #000000;
-  font-family: "Inter", Arial, sans-serif;
+  max-width: 1440px;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 104px;
+}
+
+.header__logo {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  font-size: 20px;
   color: #ffffff;
+  text-decoration: none;
+}
+
+.header__link-distributions {
+  width: 278px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__content-link {
+  padding: 30px 11px 26px 13px;
+  display: inline-block;
+  border-bottom: 3px solid #ffffff;
+}
+
+.header__link {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header__button {
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  background-color: transparent;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  width: 176px;
+  height: 48px;
 }
