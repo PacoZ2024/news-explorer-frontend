@@ -1,7 +1,9 @@
+import SearchForm from '../SearchForm/SearchForm.jsx';
+
 export default function Main() {
   return (
     <main>
-      <p>Esta es una prueba</p>
+      <SearchForm />
     </main>
   );
 }
