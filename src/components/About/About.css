@@ -1,5 +1,36 @@
 .about {
-  background-color: #000000;
-  font-family: "Inter", Arial, sans-serif;
-  color: #ffffff;
+  color: #1a1b22;
+  background: #ffffff;
+}
+
+.about__content {
+  padding: 80px 216px 80px 104px;
+  display: flex;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+}
+
+.about__info-container {
+  max-width: 600px;
+  margin-left: 56px;
+}
+
+.about__title {
+  margin-top: 51px;
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.about__paragraph {
+  margin-top: 24px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
 }
