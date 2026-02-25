@@ -3,11 +3,13 @@ import backgroundSearch from '../../assets/images/background-search.jpg';
 export default function SearchForm() {
   return (
     <div className='searchform'>
-      <img
-        className='searchform__image'
-        alt='Imagen de fondo para formulario de búsqueda'
-        src={backgroundSearch}
-      />
+      <div className='searchform__image-container'>
+        <img
+          className='searchform__image'
+          alt='Imagen de fondo para formulario de búsqueda'
+          src={backgroundSearch}
+        />
+      </div>
       <h1 className='searchform__title'>¿Qué está pasando en el mundo?</h1>
       <p className='searchform__paragraph'>
         Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
