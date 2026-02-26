@@ -1,3 +1,9 @@
+import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.jsx';
+
 export default function SavedNews() {
-  return <></>;
+  return (
+    <div className='saved-news'>
+      <SavedNewsHeader />
+    </div>
+  );
 }
