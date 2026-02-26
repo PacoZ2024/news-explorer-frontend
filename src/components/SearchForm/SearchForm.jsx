@@ -2,7 +2,7 @@ import backgroundSearch from '../../assets/images/background-search.jpg';
 
 export default function SearchForm() {
   return (
-    <div className='search-form'>
+    <section className='search-form'>
       <div className='search-form__image-container'>
         <img
           className='search-form__image'
@@ -28,6 +28,6 @@ export default function SearchForm() {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }

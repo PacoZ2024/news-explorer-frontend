@@ -3,9 +3,9 @@ import NewsCardList from '../NewsCardList/NewsCardList.jsx';
 
 export default function SavedNews() {
   return (
-    <div className='saved-news'>
+    <main className='saved-news'>
       <SavedNewsHeader />
       <NewsCardList />
-    </div>
+    </main>
   );
 }

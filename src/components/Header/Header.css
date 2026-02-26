@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-.header__dark {
+.header__light {
   color: #1a1b22;
   background: #ffffff;
   box-shadow: inset 0px -1px 0px #d1d2d6;
@@ -41,7 +41,7 @@
   border-bottom: 3px solid #ffffff;
 }
 
-.header__link-container-active-dark {
+.header__link-container-active-light {
   border-bottom: 3px solid #1a1b22;
 }
 
@@ -68,7 +68,7 @@
   padding: 12px;
 }
 
-.header__button-dark {
+.header__button-light {
   border: 1px solid #1a1b22;
 }
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <header className='header header__dark'>
+    <header className='header header__light'>
       <div className='header__content'>
         <Link className='header__logo' to='/'>
           News Explorer
@@ -13,12 +13,12 @@ export default function Header() {
               Inicio
             </Link>
           </div>
-          <div className='header__link-container header__link-container-active-dark'>
+          <div className='header__link-container header__link-container-active-light'>
             <Link className='header__link' to='/saved-news'>
               Artículos guardados
             </Link>
           </div>
-          <button className='header__button header__button-dark'>
+          <button className='header__button header__button-light'>
             Iniciar sesión
           </button>
         </div>

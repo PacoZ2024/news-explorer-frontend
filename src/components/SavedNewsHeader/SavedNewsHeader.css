@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.saved-news-header__title {
+.saved-news-header__section {
   margin: 40px 0 0;
   font-family: 'Roboto';
   font-weight: 400;
@@ -17,7 +17,7 @@
   color: rgba(26, 27, 34, 0.5);
 }
 
-.saved-news-header__info {
+.saved-news-header__title {
   max-width: 530px;
   margin: 28px 0 0;
   font-family: 'Roboto Slab';
