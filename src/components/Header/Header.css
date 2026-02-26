@@ -7,6 +7,8 @@
 
 .header__dark {
   color: #1a1b22;
+  background: #ffffff;
+  box-shadow: inset 0px -1px 0px #d1d2d6;
 }
 
 .header__content {
