@@ -24,7 +24,8 @@
 }
 
 .news-card__date {
-  margin: 20px 0 12px 24px;
+  margin: 0;
+  padding: 20px 0 12px 24px;
   font-family: 'Source Sans 3';
   font-weight: 400;
   font-size: 18px;
@@ -35,7 +36,7 @@
 .news-card__title {
   width: 352px;
   height: 90px;
-  margin: 12px 24px;
+  margin: 0 auto;
   font-family: 'Roboto Slab';
   font-weight: 400;
   font-size: 26px;
@@ -51,7 +52,7 @@
 .news-card__paragraph {
   width: 352px;
   height: 88px;
-  margin: 12px auto 14px;
+  margin: 13px auto;
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 16px;
@@ -67,7 +68,7 @@
 .news-card__source {
   width: 352px;
   height: 20px;
-  margin: 14px auto 24px 24px;
+  margin: 0 auto 24px;
   font-family: 'Roboto Slab';
   font-weight: 700;
   font-size: 16px;

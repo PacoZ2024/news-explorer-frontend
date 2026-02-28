@@ -3,6 +3,15 @@
   background: #f5f6f7;
 }
 
+.news-card-list__card-container {
+  padding: 62px 0;
+  max-width: 1232px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 16px;
+}
+
 .news-card-list__not-found-content {
   width: 356px;
   margin: 0 auto;
