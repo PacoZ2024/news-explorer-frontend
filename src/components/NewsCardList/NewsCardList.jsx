@@ -4,9 +4,19 @@ import lakeNotice from '../../assets/images/lake-notice.jpg';
 import parkNotice from '../../assets/images/park-notice.jpg';
 import bisonNotice from '../../assets/images/bison-notice.jpg';
 import skyNotice from '../../assets/images/sky-notice.jpg';
+import NewsCard from '../NewsCard/NewsCard.jsx';
 
 export default function NewsCardList() {
   const value = false;
+  const card = {
+    image:
+      'https://www.amblesideanddistrictu3a.org.uk/file/2021/03/Stump-Grinding.png',
+    date: '4 de noviembre de 2020',
+    title: 'Todo el mundo necesita un lugar de reflexión en la naturaleza',
+    content:
+      'Desde que leí el influyente libro de Richard Louv, El último niño en el bosque, la idea de tener un lugar de reflexión especial para mi se me ha quedado grabada. Este consejo, que...',
+    source: 'treehugger',
+  };
   return (
     <section className='news-card-list'>
       {value ? (
@@ -26,6 +36,7 @@ export default function NewsCardList() {
         </div>
       ) : (
         <div className='news-card-list__card-container'>
+          <NewsCard card={card} isLoggedIn={false} />
           <div className='news-card'>
             <div className='news-card__image-container'>
               <img
