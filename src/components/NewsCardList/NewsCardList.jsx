@@ -16,6 +16,7 @@ export default function NewsCardList() {
     content:
       'Desde que leí el influyente libro de Richard Louv, El último niño en el bosque, la idea de tener un lugar de reflexión especial para mi se me ha quedado grabada. Este consejo, que...',
     source: 'treehugger',
+    keyword: 'Fotografía',
   };
   return (
     <section className='news-card-list'>
@@ -36,7 +37,7 @@ export default function NewsCardList() {
         </div>
       ) : (
         <div className='news-card-list__card-container'>
-          <NewsCard article={card} isLoggedIn={false} isSaved={false} />
+          <NewsCard article={card} isLoggedIn={true} isSaved={true} />
           <div className='news-card'>
             <div className='news-card__image-container'>
               <img

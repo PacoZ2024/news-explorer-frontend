@@ -14,6 +14,27 @@
   position: relative;
 }
 
+.news-card__keyword {
+  height: 40px;
+  max-width: 124px;
+  padding: 0 9px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .news-card__image {
   width: 400px;
   height: 272px;

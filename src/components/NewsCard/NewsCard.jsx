@@ -9,9 +9,9 @@ export default function NewsCard({
   onDeleteArticle,
   isSaved,
   isLoggedIn,
-  isSavedNewsPage = false,
+  isSavedNewsPage = true,
 }) {
-  const { image, date, title, content, source } = article;
+  const { image, date, title, content, source, keyword } = article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
 
@@ -33,6 +33,11 @@ export default function NewsCard({
   return (
     <div className='news-card'>
       <div className='news-card__image-container'>
+        {isSavedNewsPage ? (
+          <div className='news-card__keyword'>{keyword}</div>
+        ) : (
+          <></>
+        )}
         <img
           className='news-card__image'
           alt='Imagen de la noticia'
