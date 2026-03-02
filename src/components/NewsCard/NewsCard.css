@@ -54,6 +54,37 @@
   opacity: 1;
 }
 
+.news-card__save-button {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-card__save-button:hover {
+  cursor: pointer;
+}
+
+.news-card__save-icon {
+  padding: 10.5px 13px;
+  width: 14px;
+  height: 19px;
+  opacity: 0.4;
+}
+
+.news-card__save-icon:hover {
+  opacity: 1;
+}
+
+.news-card__save-icon_active {
+  opacity: 1;
+}
+
 .news-card__tooltip {
   width: 182px;
   height: 40px;

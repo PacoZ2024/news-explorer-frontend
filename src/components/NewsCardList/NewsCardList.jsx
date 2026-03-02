@@ -36,7 +36,7 @@ export default function NewsCardList() {
         </div>
       ) : (
         <div className='news-card-list__card-container'>
-          <NewsCard card={card} isLoggedIn={false} />
+          <NewsCard article={card} isLoggedIn={false} isSaved={false} />
           <div className='news-card'>
             <div className='news-card__image-container'>
               <img

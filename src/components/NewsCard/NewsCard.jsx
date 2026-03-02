@@ -1,15 +1,17 @@
 import iconTrash from '../../assets/images/icon-trash.svg';
+import iconSaved from '../../assets/images/icon-saved.svg';
+import iconSavedActive from '../../assets/images/icon-saved-fill.svg';
 import { useState } from 'react';
 
-export default function NewsCard(
-  props,
+export default function NewsCard({
+  article,
   onSaveArticle,
   onDeleteArticle,
   isSaved,
   isLoggedIn,
   isSavedNewsPage = false,
-) {
-  const { image, date, title, content, source } = props.card;
+}) {
+  const { image, date, title, content, source } = article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
 
@@ -22,9 +24,9 @@ export default function NewsCard(
     }
 
     if (isSaved) {
-      onDeleteArticle(props.card);
+      onDeleteArticle(article);
     } else {
-      onSaveArticle(props.card);
+      onSaveArticle(article);
     }
   }
 
@@ -43,7 +45,7 @@ export default function NewsCard(
               onClick={handleSaveClick}
               onMouseEnter={() => {
                 setMessageTooltip('Eliminar de artículos guardados');
-                !isLoggedIn && setShowTooltip(true);
+                isSaved && isLoggedIn && setShowTooltip(true);
               }}
               onMouseLeave={() => setShowTooltip(false)}
             >
@@ -51,18 +53,25 @@ export default function NewsCard(
             </button>
           ) : (
             <button
-              className={`news-cardsave-button ${isSaved ? 'news-cardsave-button_active' : ''}`}
+              className='news-card__save-button'
               onClick={handleSaveClick}
               onMouseEnter={() => {
                 setMessageTooltip('Inicia sesión para guardar artículos');
-                !isLoggedIn && setShowTooltip(true);
+                !isSaved && !isLoggedIn && setShowTooltip(true);
               }}
               onMouseLeave={() => setShowTooltip(false)}
             >
-              <i className='news-cardsave-icon'></i>
+              {isSaved && isLoggedIn ? (
+                <img
+                  className='news-card__save-icon news-card__save-icon_active'
+                  src={iconSavedActive}
+                />
+              ) : (
+                <img className='news-card__save-icon' src={iconSaved} />
+              )}
             </button>
           )}
-          {showTooltip && !isLoggedIn && (
+          {showTooltip && (
             <div className='news-card__tooltip'>{messageTooltip}</div>
           )}
         </div>
