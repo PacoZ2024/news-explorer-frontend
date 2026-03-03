@@ -9,7 +9,7 @@ export default function NewsCard({
   onDeleteArticle,
   isSaved,
   isLoggedIn,
-  isSavedNewsPage = true,
+  isSavedNewsPage,
 }) {
   const { image, date, title, content, source, keyword } = article;
   const [showTooltip, setShowTooltip] = useState(false);

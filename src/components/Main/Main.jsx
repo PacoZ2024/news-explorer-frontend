@@ -1,12 +1,12 @@
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import About from '../About/About.jsx';
-import Preloader from '../Preloader/Preloader.jsx';
+import NewsCardList from '../NewsCardList/NewsCardList.jsx';
 
 export default function Main() {
   return (
     <main className='main'>
       <SearchForm />
-      <Preloader />
+      <NewsCardList isSavedNewsPage={false} isLoggedIn={true} />
       <About />
     </main>
   );

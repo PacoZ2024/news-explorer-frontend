@@ -1,13 +1,22 @@
+import { useState } from 'react';
 import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
 import cards from '../../../data/cards.json';
 
-export default function NewsCardList() {
-  const value = false;
+export default function NewsCardList({ isSavedNewsPage, isLoggedIn }) {
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  function handleShowMore() {
+    setVisibleCards((prev) => prev + 3);
+  }
+
+  const articlesToShow = isSavedNewsPage ? cards : cards.slice(0, visibleCards);
+
+  const showMoreButton = !isSavedNewsPage && visibleCards < cards.length;
 
   return (
     <section className='news-card-list'>
-      {value ? (
+      {!isSavedNewsPage && cards.length == 0 ? (
         <div className='news-card-list__not-found-content'>
           <img
             className='news-card-list__not-found-image'
@@ -23,11 +32,29 @@ export default function NewsCardList() {
           </p>
         </div>
       ) : (
-        <div className='news-card-list__card-container'>
-          {cards.map((card) => (
-            <NewsCard article={card} isSaved={true} isLoggedIn={true} />
-          ))}
-        </div>
+        <>
+          <div className='news-card-list__card-container'>
+            {articlesToShow.map((card, index) => (
+              <NewsCard
+                key={`${card.url}-${index}`}
+                article={card}
+                isSaved={true}
+                isLoggedIn={isLoggedIn}
+                isSavedNewsPage={isSavedNewsPage}
+              />
+            ))}
+          </div>
+          {showMoreButton && (
+            <div className='news-card-list__button-container'>
+              <button
+                className='news-card-list__button'
+                onClick={handleShowMore}
+              >
+                Ver más
+              </button>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
