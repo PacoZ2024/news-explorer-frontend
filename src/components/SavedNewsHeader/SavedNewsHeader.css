@@ -26,6 +26,15 @@
   line-height: 46px;
 }
 
+.saved-news-header__username {
+  max-width: 530px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
 .saved-news-header__themes {
   margin: 30px 0 56px;
   font-family: 'Roboto';

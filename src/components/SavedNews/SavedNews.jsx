@@ -5,7 +5,7 @@ export default function SavedNews() {
   return (
     <main className='saved-news'>
       <SavedNewsHeader />
-      <NewsCardList isSavedNewsPage={true} isLoggedIn={true} />
+      <NewsCardList />
     </main>
   );
 }

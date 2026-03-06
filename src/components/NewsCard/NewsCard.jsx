@@ -1,16 +1,16 @@
+import { useState, useContext } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 import iconTrash from '../../assets/images/icon-trash.svg';
 import iconSaved from '../../assets/images/icon-saved.svg';
 import iconSavedActive from '../../assets/images/icon-saved-fill.svg';
-import { useState } from 'react';
 
 export default function NewsCard({
   article,
   onSaveArticle,
   onDeleteArticle,
   isSaved,
-  isLoggedIn,
-  isSavedNewsPage,
 }) {
+  const { isSavedNewsPage, isLoggedIn } = useContext(CurrentUserContext);
   const { image, date, title, content, source, keyword } = article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
@@ -62,7 +62,7 @@ export default function NewsCard({
               onClick={handleSaveClick}
               onMouseEnter={() => {
                 setMessageTooltip('Inicia sesión para guardar artículos');
-                !isSaved && !isLoggedIn && setShowTooltip(true);
+                !isLoggedIn && setShowTooltip(true);
               }}
               onMouseLeave={() => setShowTooltip(false)}
             >

@@ -58,6 +58,7 @@
 }
 
 .header__button {
+  max-width: 250px;
   border: 1px solid #ffffff;
   border-radius: 100px;
   background-color: transparent;
@@ -66,12 +67,30 @@
   font-size: 18px;
   color: inherit;
   padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.header__button:hover {
+  cursor: pointer;
 }
 
 .header__button-light {
   border: 1px solid #1a1b22;
 }
 
-.header__button:hover {
-  cursor: pointer;
+.header__button-text {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.header__icon-container {
+  width: 24px;
+  height: 24px;
+  margin-left: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

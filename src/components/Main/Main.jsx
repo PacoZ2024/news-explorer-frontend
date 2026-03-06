@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <main className='main'>
       <SearchForm />
-      <NewsCardList isSavedNewsPage={false} isLoggedIn={true} />
+      <NewsCardList />
       <About />
     </main>
   );

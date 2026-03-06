@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext.js';
 import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
 import cards from '../../../data/cards.json';
 
-export default function NewsCardList({ isSavedNewsPage, isLoggedIn }) {
+export default function NewsCardList() {
+  const { isSavedNewsPage } = useContext(CurrentUserContext);
   const [visibleCards, setVisibleCards] = useState(3);
 
   function handleShowMore() {
@@ -39,8 +41,6 @@ export default function NewsCardList({ isSavedNewsPage, isLoggedIn }) {
                 key={`${card.url}-${index}`}
                 article={card}
                 isSaved={true}
-                isLoggedIn={isLoggedIn}
-                isSavedNewsPage={isSavedNewsPage}
               />
             ))}
           </div>
