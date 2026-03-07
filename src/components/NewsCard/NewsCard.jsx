@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import iconTrash from '../../assets/images/icon-trash.svg';
 import iconSaved from '../../assets/images/icon-saved.svg';
@@ -10,10 +11,11 @@ export default function NewsCard({
   onDeleteArticle,
   isSaved,
 }) {
-  const { isSavedNewsPage, isLoggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
   const { image, date, title, content, source, keyword } = article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
+  const location = useLocation();
 
   function handleSaveClick() {
     if (!isLoggedIn) {
@@ -33,7 +35,7 @@ export default function NewsCard({
   return (
     <div className='news-card'>
       <div className='news-card__image-container'>
-        {isSavedNewsPage ? (
+        {location.pathname === '/saved-news' ? (
           <div className='news-card__keyword'>{keyword}</div>
         ) : (
           <></>
@@ -44,7 +46,7 @@ export default function NewsCard({
           src={image}
         />
         <div className='news-card__button-container'>
-          {isSavedNewsPage ? (
+          {location.pathname === '/saved-news' ? (
             <button
               className='news-card__delete-button'
               onClick={handleSaveClick}

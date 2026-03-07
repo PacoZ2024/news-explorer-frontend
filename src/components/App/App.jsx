@@ -10,7 +10,6 @@ import Footer from '../Footer/Footer.jsx';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isSavedNewsPage, setIsSavedNewsPage] = useState(true);
   const [userName, setUserName] = useState('Elise');
 
   return (
@@ -18,8 +17,6 @@ export default function App() {
       value={{
         isLoggedIn,
         setIsLoggedIn,
-        isSavedNewsPage,
-        setIsSavedNewsPage,
         userName,
         setUserName,
       }}

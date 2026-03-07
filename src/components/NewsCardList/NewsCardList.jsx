@@ -1,24 +1,26 @@
-import { useState, useContext } from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext.js';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
 import cards from '../../../data/cards.json';
 
 export default function NewsCardList() {
-  const { isSavedNewsPage } = useContext(CurrentUserContext);
   const [visibleCards, setVisibleCards] = useState(3);
+  const location = useLocation();
 
   function handleShowMore() {
     setVisibleCards((prev) => prev + 3);
   }
 
-  const articlesToShow = isSavedNewsPage ? cards : cards.slice(0, visibleCards);
+  const articlesToShow =
+    location.pathname === '/saved-news' ? cards : cards.slice(0, visibleCards);
 
-  const showMoreButton = !isSavedNewsPage && visibleCards < cards.length;
+  const showMoreButton =
+    location.pathname === '/' && visibleCards < cards.length;
 
   return (
     <section className='news-card-list'>
-      {!isSavedNewsPage && cards.length == 0 ? (
+      {location.pathname === '/' && cards.length == 0 ? (
         <div className='news-card-list__not-found-content'>
           <img
             className='news-card-list__not-found-image'
