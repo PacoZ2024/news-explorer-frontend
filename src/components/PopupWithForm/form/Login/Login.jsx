@@ -5,7 +5,7 @@ export default function Login() {
     <form className='login' id='login-form' noValidate>
       <fieldset className='login__content'>
         <legend className='login__title'>Iniciar sesión</legend>
-        <label className='login__label' for='login-email'>
+        <label className='login__label' htmlFor='login-email'>
           Correo electrónico
         </label>
         <input
@@ -19,7 +19,7 @@ export default function Login() {
         <span className='login__span-error'>
           Dirección de correo electrónico no válida
         </span>
-        <label className='login__label' for='login-password'>
+        <label className='login__label' htmlFor='login-password'>
           Contraseña
         </label>
         <input
