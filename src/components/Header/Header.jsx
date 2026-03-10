@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
-export default function Header() {
+export default function Header({ popup, onOpenPopup, onClosePopup }) {
   const location = useLocation();
   return (
     <header
@@ -11,7 +11,11 @@ export default function Header() {
         <Link className='header__logo' to='/'>
           News Explorer
         </Link>
-        <Navigation />
+        <Navigation
+          popup={popup}
+          onOpenPopup={onOpenPopup}
+          onClosePopup={onClosePopup}
+        />
       </div>
     </header>
   );

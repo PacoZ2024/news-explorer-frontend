@@ -3,8 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import iconLogoutDark from '../../assets/images/icon-exit-dark.svg';
 import iconLogoutLight from '../../assets/images/icon-exit-light.svg';
+import PopupWithForm from '../PopupWithForm/PopupWithForm.jsx';
+import Login from '../PopupWithForm/form/Login/Login.jsx';
 
-export default function Navigation({ onSignIn, onSignOut }) {
+export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
+  const loginPopup = { children: <Login /> };
   const { isLoggedIn, userName } = useContext(CurrentUserContext);
   const location = useLocation();
 
@@ -34,7 +37,6 @@ export default function Navigation({ onSignIn, onSignOut }) {
         {isLoggedIn ? (
           <button
             className={`navigation__button ${location.pathname === '/saved-news' ? 'navigation__button-light' : ''}`}
-            onClick={onSignOut}
           >
             <span className='navigation__button-text'>{userName}</span>
             <div className='navigation__icon-container'>
@@ -46,11 +48,21 @@ export default function Navigation({ onSignIn, onSignOut }) {
             </div>
           </button>
         ) : (
-          <button className='navigation__button' onClick={onSignIn}>
+          <button
+            className='navigation__button'
+            onClick={() => {
+              onOpenPopup(loginPopup);
+            }}
+          >
             Iniciar sesión
           </button>
         )}
       </div>
+      {popup && (
+        <PopupWithForm onClosePopup={onClosePopup}>
+          {popup.children}
+        </PopupWithForm>
+      )}
     </nav>
   );
 }

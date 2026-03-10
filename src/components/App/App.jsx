@@ -9,8 +9,17 @@ import SavedNews from '../SavedNews/SavedNews.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [popup, setPopup] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('Elise');
+
+  function handleOpenPopup(popup) {
+    setPopup(popup);
+  }
+
+  function handleClosePopup() {
+    setPopup(null);
+  }
 
   return (
     <CurrentUserContext.Provider
@@ -22,7 +31,11 @@ export default function App() {
       }}
     >
       <div className='app'>
-        <Header />
+        <Header
+          onOpenPopup={handleOpenPopup}
+          onClosePopup={handleClosePopup}
+          popup={popup}
+        />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/saved-news' element={<SavedNews />} />
