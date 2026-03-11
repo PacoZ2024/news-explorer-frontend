@@ -93,17 +93,20 @@
   color: #b6bcbf;
 }
 
-.login__paragraph {
+.login__switch {
   margin: 16px auto 0;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  text-align: center;
+}
+
+.login__switch-text {
   color: #000000;
 }
 
-.login__link {
-  text-decoration: none;
+.login__switch-button {
+  all: unset;
+  cursor: pointer;
   color: #2f71e5;
 }

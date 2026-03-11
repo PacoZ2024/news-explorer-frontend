@@ -1,6 +1,15 @@
-import { Link } from 'react-router-dom';
+import Register from '../Register/Register.jsx';
 
-export default function Login() {
+export default function Login({ popup, onOpenPopup, onClosePopup }) {
+  const registerPopup = {
+    children: (
+      <Register
+        popup={popup}
+        onOpenPopup={onOpenPopup}
+        onClosePopup={onClosePopup}
+      />
+    ),
+  };
   return (
     <form className='login' id='login-form' noValidate>
       <fieldset className='login__content'>
@@ -33,10 +42,24 @@ export default function Login() {
         <button className='login__button' type='submit'>
           Iniciar sesión
         </button>
-        <p className='login__paragraph'>
-          o <Link className='login__link'>inscribirse</Link>
-        </p>
+        <div className='login__switch'>
+          <span className='login__switch-text'>o </span>
+          <button
+            type='button'
+            className='login__switch-button'
+            onClick={() => {
+              onOpenPopup(registerPopup);
+            }}
+          >
+            inscribirse
+          </button>
+        </div>
       </fieldset>
+      {popup && (
+        <PopupWithForm onClosePopup={onClosePopup}>
+          {popup.children}
+        </PopupWithForm>
+      )}
     </form>
   );
 }

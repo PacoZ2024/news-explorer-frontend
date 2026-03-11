@@ -93,17 +93,20 @@
   color: #b6bcbf;
 }
 
-.register__paragraph {
+.register__switch {
   margin: 16px auto 0;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  text-align: center;
+}
+
+.register__switch-text {
   color: #000000;
 }
 
-.register__link {
-  text-decoration: none;
+.register__switch-button {
+  all: unset;
+  cursor: pointer;
   color: #2f71e5;
 }

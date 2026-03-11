@@ -4,10 +4,18 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 import iconLogoutDark from '../../assets/images/icon-exit-dark.svg';
 import iconLogoutLight from '../../assets/images/icon-exit-light.svg';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.jsx';
-import Register from '../PopupWithForm/form/Register/Register.jsx';
+import Login from '../PopupWithForm/form/Login/Login.jsx';
 
 export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
-  const loginPopup = { children: <Register /> };
+  const loginPopup = {
+    children: (
+      <Login
+        popup={popup}
+        onOpenPopup={onOpenPopup}
+        onClosePopup={onClosePopup}
+      />
+    ),
+  };
   const { isLoggedIn, userName } = useContext(CurrentUserContext);
   const location = useLocation();
 
