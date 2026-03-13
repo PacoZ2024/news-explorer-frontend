@@ -36,6 +36,7 @@
 
 .navigation__button {
   max-width: 250px;
+  outline: none;
   border: 1px solid #ffffff;
   border-radius: 100px;
   background-color: transparent;

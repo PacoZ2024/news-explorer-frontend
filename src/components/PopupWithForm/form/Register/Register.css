@@ -72,6 +72,7 @@
 .register__button {
   margin-top: 21px;
   padding: 0;
+  outline: none;
   border: none;
   box-sizing: border-box;
   width: 360px;
