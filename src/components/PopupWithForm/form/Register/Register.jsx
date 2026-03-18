@@ -90,7 +90,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           onChange={handlePasswordChange}
           placeholder='Introduce tu contraseña'
           required
-        ></input>
+        />
         <span className='register__span-error'>{passwordMessageError}</span>
         <label className='register__label' htmlFor='register-username'>
           Nombre de usuario
@@ -107,7 +107,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           onChange={handleUsernameChange}
           placeholder='Introduce tu nombre de usuario'
           required
-        ></input>
+        />
         <span className='register__span-error'>{usernameMessageError}</span>
         <button
           className='register__button'

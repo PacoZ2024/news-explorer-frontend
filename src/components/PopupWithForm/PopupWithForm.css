@@ -37,4 +37,5 @@
 
 .popup-with-form__icon-close-button:hover {
   cursor: pointer;
+  opacity: 0.6;
 }

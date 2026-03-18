@@ -15,9 +15,11 @@ export default function SearchForm() {
         Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
         cuenta personal.
       </p>
-      <form className='search-form__form'>
+      <form className='search-form__form' id='search-form'>
         <div className='search-form__form-container'>
           <input
+            id='search'
+            name='search'
             type='text'
             className='search-form__form-input'
             placeholder='Introduce un tema'

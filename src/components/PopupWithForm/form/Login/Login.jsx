@@ -77,7 +77,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
           onChange={handlePasswordChange}
           placeholder='Introduce tu contraseña'
           required
-        ></input>
+        />
         <span className='login__span-error'>{passwordMessageError}</span>
         <button
           className='login__button'
