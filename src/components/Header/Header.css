@@ -5,6 +5,11 @@
   margin: 0 auto;
 }
 
+.header__container {
+  max-width: 1232px;
+  margin: 0 auto;
+}
+
 .header__light {
   color: #1a1b22;
   background: #ffffff;
@@ -15,7 +20,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 104px;
 }
 
 .header__logo {

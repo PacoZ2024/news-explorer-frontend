@@ -4,8 +4,13 @@
   background: #ffffff;
 }
 
+.footer__container {
+  padding: 28px 0 26px;
+  margin: 0 auto;
+  max-width: 1232px;
+}
+
 .footer__content {
-  padding: 28px 104px 26px;
   display: flex;
   justify-content: space-between;
 }
