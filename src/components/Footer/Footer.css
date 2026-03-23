@@ -63,3 +63,9 @@
   width: 24px;
   height: 24px;
 }
+
+@media screen and (max-width: 1232px) {
+  .footer__container {
+    max-width: 688px;
+  }
+}

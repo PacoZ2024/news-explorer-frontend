@@ -39,3 +39,33 @@
   font-size: 18px;
   line-height: 24px;
 }
+
+@media screen and (max-width: 1232px) {
+  .about__container {
+    padding: 61px 0;
+  }
+
+  .about__content {
+    align-items: center;
+  }
+
+  .about__image {
+    width: 232px;
+    height: 232px;
+  }
+
+  .about__info-container {
+    max-width: 424px;
+    margin: 0 0 0 32px;
+  }
+
+  .about__title {
+    margin: 0;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .about__paragraph {
+    margin-top: 16px;
+  }
+}

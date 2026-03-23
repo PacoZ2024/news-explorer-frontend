@@ -54,7 +54,11 @@
 }
 
 .navigation__button-light {
-  border: 1px solid #1a1b22;
+  border: 1px solid #d1d2d6;
+}
+
+.navigation__button-light:hover {
+  border-color: #1a1b22;
 }
 
 .navigation__button-text {
@@ -71,4 +75,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 1232px) {
+  .navigation__link {
+    font-size: 16px;
+  }
+
+  .navigation__link-container {
+    padding: 22px 11px 20px 13px;
+    margin-right: 16px;
+  }
+
+  .navigation__button {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
 }

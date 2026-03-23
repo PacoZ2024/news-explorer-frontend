@@ -2,7 +2,6 @@
   background: #ffffff;
   max-width: 1440px;
   padding-left: 104px;
-  height: 294px;
   color: #1a1b22;
   display: flex;
   flex-direction: column;
@@ -41,4 +40,25 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media screen and (max-width: 1232px) {
+  .saved-news-header {
+    padding-left: 40px;
+  }
+
+  .saved-news-header__section {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+
+  .saved-news-header__title {
+    margin-top: 16px;
+    font-size: 30px;
+    line-height: 34px;
+  }
+
+  .saved-news-header__themes {
+    margin: 16px 0 32px;
+  }
 }

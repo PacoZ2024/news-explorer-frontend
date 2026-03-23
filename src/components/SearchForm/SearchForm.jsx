@@ -10,7 +10,11 @@ export default function SearchForm() {
           src={backgroundSearch}
         />
       </div>
-      <h1 className='search-form__title'>¿Qué está pasando en el mundo?</h1>
+      <h1 className='search-form__title'>
+        ¿Qué está pasando
+        <br />
+        en el mundo?
+      </h1>
       <p className='search-form__paragraph'>
         Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu
         cuenta personal.
