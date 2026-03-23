@@ -37,6 +37,11 @@ export default function NewsCardList() {
         </div>
       ) : (
         <>
+          {location.pathname === '/' ? (
+            <h2 className='news-card-list__title'>Resultados de la búsqueda</h2>
+          ) : (
+            <></>
+          )}
           <div className='news-card-list__card-container'>
             {articlesToShow.map((card, index) => (
               <NewsCard
