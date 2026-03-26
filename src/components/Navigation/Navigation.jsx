@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { Squash as Hamburger } from 'hamburger-react';
 import iconLogoutDark from '../../assets/images/icon-exit-dark.svg';
 import iconLogoutLight from '../../assets/images/icon-exit-light.svg';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.jsx';
@@ -17,7 +18,30 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
     ),
   };
   const { isLoggedIn, userName } = useContext(CurrentUserContext);
+  const [toggledIsOpen, setToggledIsOpen] = useState(false);
   const location = useLocation();
+  const wrapperRef = useRef(null);
+
+  function closeToggled() {
+    setToggledIsOpen(false);
+  }
+
+  useEffect(() => {
+    function handleOverlayClick(event) {
+      if (
+        toggledIsOpen &&
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target)
+      ) {
+        setToggledIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleOverlayClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOverlayClick);
+    };
+  }, [toggledIsOpen]);
 
   return (
     <nav>
@@ -64,6 +88,61 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
           >
             Iniciar sesión
           </button>
+        )}
+      </div>
+
+      <div className='navigation__mobile'>
+        <Hamburger
+          size='24'
+          toggled={toggledIsOpen}
+          toggle={setToggledIsOpen}
+        />
+        {toggledIsOpen && (
+          <ul className='navigation__menu-hamburger' ref={wrapperRef}>
+            <li className='navigation__menu-hamburger-link-container'>
+              <Link className='navigation__link' to='/' onClick={closeToggled}>
+                Inicio
+              </Link>
+            </li>
+
+            {isLoggedIn ? (
+              <>
+                <li className='navigation__menu-hamburger-link-container'>
+                  <Link
+                    className='navigation__link'
+                    to='/saved-news'
+                    onClick={closeToggled}
+                  >
+                    Artículos guardados
+                  </Link>
+                </li>
+                <button
+                  className='navigation__button'
+                  onClick={() => {
+                    closeToggled();
+                  }}
+                >
+                  <span className='navigation__button-text'>{userName}</span>
+                  <div className='navigation__icon-container'>
+                    <img
+                      src={iconLogoutLight}
+                      alt='Icono de cierre de sesión'
+                    />
+                  </div>
+                </button>
+              </>
+            ) : (
+              <button
+                className='navigation__button'
+                onClick={() => {
+                  onOpenPopup(loginPopup);
+                  closeToggled();
+                }}
+              >
+                Iniciar sesión
+              </button>
+            )}
+          </ul>
         )}
       </div>
       {popup && (
