@@ -62,3 +62,27 @@
     margin: 16px 0 32px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .saved-news-header {
+    padding-left: 16px;
+  }
+
+  .saved-news-header__section {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .saved-news-header__title {
+    max-width: 288px;
+  }
+
+  .saved-news-header__username {
+    max-width: 288px;
+  }
+
+  .saved-news-header__themes {
+    margin-top: 50px;
+    max-width: 288px;
+  }
+}
