@@ -69,3 +69,28 @@
     max-width: 688px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer__container {
+    padding: 20px 0 22px;
+  }
+
+  .footer__content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__copyright {
+    margin-top: 38px;
+  }
+
+  .footer__link-content {
+    width: 288px;
+  }
+
+  .footer__link-container {
+    flex-direction: column;
+    margin: 0;
+    height: 74px;
+  }
+}
