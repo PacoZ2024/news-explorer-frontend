@@ -130,4 +130,12 @@
   .news-card-list__button {
     width: 288px;
   }
+
+  .news-card-list__not-found-content {
+    width: 288px;
+  }
+
+  .news-card-list__not-found-title {
+    text-align: center;
+  }
 }
