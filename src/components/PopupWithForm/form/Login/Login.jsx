@@ -36,7 +36,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
     validatePassword(event.target.value)
       ? setPasswordMessageError('')
       : setPasswordMessageError(
-          'La contraseña debe tener entre 8 y 16 caracteres con al menos un dígito, una minúscula y una mayúscula.',
+          'La contraseña debe tener entre 8 y 16 caracteres con al menos un dígito, una minúscula y una mayúscula',
         );
   }
 

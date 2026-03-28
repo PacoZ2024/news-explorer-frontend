@@ -111,3 +111,32 @@
   cursor: pointer;
   color: #2f71e5;
 }
+
+@media screen and (max-width: 320px) {
+  .register {
+    width: 320px;
+    height: 432px;
+  }
+
+  .register__content {
+    margin: 16px;
+  }
+
+  .register__title {
+    margin-bottom: 18px;
+  }
+
+  .register__input {
+    width: 288px;
+  }
+
+  .register__span-error {
+    width: 288px;
+    margin-bottom: 15px;
+  }
+
+  .register__button {
+    margin-top: 23px;
+    width: 288px;
+  }
+}

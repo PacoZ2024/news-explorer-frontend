@@ -39,7 +39,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
     validatePassword(event.target.value)
       ? setPasswordMessageError('')
       : setPasswordMessageError(
-          'La contraseña debe tener entre 8 y 16 caracteres con al menos un dígito, una minúscula y una mayúscula.',
+          'La contraseña debe tener entre 8 y 16 caracteres con al menos un dígito, una minúscula y una mayúscula',
         );
   }
 
@@ -49,7 +49,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
     event.target.validity.valid
       ? setUsernameMessageError('')
       : setUsernameMessageError(
-          'El nombre de usuario debe tener entre 2 y 20 caracteres de longitud',
+          'El nombre de usuario debe tener entre 2 y 20 caracteres',
         );
   }
 
@@ -76,22 +76,6 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           required
         />
         <span className='register__span-error'>{emailMessageError}</span>
-        <label className='register__label' htmlFor='register-password'>
-          Contraseña
-        </label>
-        <input
-          id='register-password'
-          className='register__input'
-          name='password'
-          type='password'
-          minLength='8'
-          maxLength='16'
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder='Introduce tu contraseña'
-          required
-        />
-        <span className='register__span-error'>{passwordMessageError}</span>
         <label className='register__label' htmlFor='register-username'>
           Nombre de usuario
         </label>
@@ -109,6 +93,22 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           required
         />
         <span className='register__span-error'>{usernameMessageError}</span>
+        <label className='register__label' htmlFor='register-password'>
+          Contraseña
+        </label>
+        <input
+          id='register-password'
+          className='register__input'
+          name='password'
+          type='password'
+          minLength='8'
+          maxLength='16'
+          value={password}
+          onChange={handlePasswordChange}
+          placeholder='Introduce tu contraseña'
+          required
+        />
+        <span className='register__span-error'>{passwordMessageError}</span>
         <button
           className='register__button'
           type='submit'
