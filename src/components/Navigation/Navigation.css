@@ -102,7 +102,7 @@
   margin-bottom: 21.94px;
 }
 
-@media screen and (max-width: 1232px) {
+@media screen and (max-width: 768px) {
   .navigation__link {
     font-size: 16px;
   }

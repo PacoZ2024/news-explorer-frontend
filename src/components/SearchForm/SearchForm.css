@@ -95,7 +95,7 @@
   background: #2a65cc;
 }
 
-@media screen and (max-width: 1232px) {
+@media screen and (max-width: 768px) {
   .search-form__image-container {
     max-width: 768px;
     height: 400px;
