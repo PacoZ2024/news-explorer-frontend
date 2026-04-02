@@ -28,16 +28,15 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
 
   useEffect(() => {
     function handleOverlayClick(event) {
-      if (
-        toggledIsOpen &&
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target)
-      ) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setToggledIsOpen(false);
       }
     }
 
-    document.addEventListener('mousedown', handleOverlayClick);
+    if (toggledIsOpen) {
+      document.addEventListener('mousedown', handleOverlayClick);
+    }
+
     return () => {
       document.removeEventListener('mousedown', handleOverlayClick);
     };
@@ -91,14 +90,14 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
         )}
       </div>
 
-      <div className='navigation__mobile'>
+      <div className='navigation__mobile' ref={wrapperRef}>
         <Hamburger
           size='24'
           toggled={toggledIsOpen}
           toggle={setToggledIsOpen}
         />
         {toggledIsOpen && (
-          <ul className='navigation__menu-hamburger' ref={wrapperRef}>
+          <ul className='navigation__menu-hamburger'>
             <li className='navigation__menu-hamburger-link-container'>
               <Link className='navigation__link' to='/' onClick={closeToggled}>
                 Inicio
