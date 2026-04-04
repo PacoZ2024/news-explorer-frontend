@@ -126,6 +126,19 @@
   }
 }
 
+@media screen and (max-width: 710px) {
+  .news-card-list__title {
+    max-width: 456px;
+    padding-top: 36px;
+    font-size: 35px;
+  }
+
+  .news-card-list__card-container {
+    max-width: 456px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 320px) {
   .news-card-list__title {
     max-width: 288px;

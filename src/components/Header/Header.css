@@ -48,6 +48,12 @@
   }
 }
 
+@media screen and (max-width: 710px) {
+  .header__container {
+    max-width: 456px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .header__container {
     max-width: 288px;

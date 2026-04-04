@@ -88,9 +88,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 710px) {
   .about__container {
-    padding: 32px 0 104px;
+    padding: 32px 0;
   }
 
   .about__content {
@@ -103,11 +103,21 @@
   }
 
   .about__info-container {
-    max-width: 288px;
+    max-width: 456px;
     margin: 24px 0 0;
   }
 
   .about__paragraph {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about__container {
+    padding-bottom: 104px;
+  }
+
+  .about__info-container {
+    max-width: 288px;
   }
 }
