@@ -127,9 +127,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 490px) {
   .search-form__image-container {
-    max-width: 320px;
+    max-width: 490px;
     height: 536px;
   }
 

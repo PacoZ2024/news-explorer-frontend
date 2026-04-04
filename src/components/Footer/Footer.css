@@ -101,7 +101,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 490px) {
   .footer__link-content {
     width: 288px;
   }

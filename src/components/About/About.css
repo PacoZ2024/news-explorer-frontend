@@ -112,7 +112,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 490px) {
   .about__container {
     padding-bottom: 104px;
   }
