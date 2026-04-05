@@ -112,7 +112,7 @@
   color: #2f71e5;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 510px) {
   .login {
     width: 320px;
     height: 350px;
