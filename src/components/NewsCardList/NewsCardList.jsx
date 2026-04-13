@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { SearchArticleContext } from '../../context/searchArticleContext.js';
 import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
-import cards from '../../../data/cards.json';
 
 export default function NewsCardList() {
+  const { searchResults, savedArticles } = useContext(SearchArticleContext);
   const [visibleCards, setVisibleCards] = useState(3);
   const location = useLocation();
 
@@ -13,14 +14,16 @@ export default function NewsCardList() {
   }
 
   const articlesToShow =
-    location.pathname === '/saved-news' ? cards : cards.slice(0, visibleCards);
+    location.pathname === '/saved-news'
+      ? savedArticles
+      : searchResults.slice(0, visibleCards);
 
   const showMoreButton =
-    location.pathname === '/' && visibleCards < cards.length;
+    location.pathname === '/' && visibleCards < searchResults.length;
 
   return (
-    <section className='news-card-list'>
-      {location.pathname === '/' && cards.length == 0 ? (
+    <section className='news-card-list' id='search-results'>
+      {location.pathname === '/' && searchResults.length == 0 ? (
         <div className='news-card-list__not-found-content'>
           <img
             className='news-card-list__not-found-image'
@@ -44,11 +47,7 @@ export default function NewsCardList() {
           )}
           <div className='news-card-list__card-container'>
             {articlesToShow.map((card, index) => (
-              <NewsCard
-                key={`${card.url}-${index}`}
-                article={card}
-                isSaved={true}
-              />
+              <NewsCard key={`${card.url}-${index}`} article={card} />
             ))}
           </div>
           {showMoreButton && (
