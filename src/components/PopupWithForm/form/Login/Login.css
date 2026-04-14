@@ -1,0 +1,141 @@
+.login {
+  width: 430px;
+  height: 380px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.login__content {
+  border: none;
+  padding: 0;
+  margin: 34px 35px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__title {
+  margin-bottom: 22px;
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+}
+
+.login__label {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2f71e5;
+}
+
+.login__input {
+  padding: 0;
+  width: 360px;
+  height: 33px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login__input:focus {
+  outline: none;
+  border-bottom: 1px solid #000000;
+}
+
+.login__input::placeholder {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  opacity: 0.2;
+}
+
+.login__span-error {
+  width: 360px;
+  height: 14px;
+  margin-bottom: 13px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+}
+
+.login__button {
+  margin-top: 21px;
+  padding: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  width: 360px;
+  height: 64px;
+  background: #2f71e5;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.login__button:disabled {
+  cursor: default;
+  background: #e6e8eb;
+  color: #b6bcbf;
+}
+
+.login__switch {
+  margin: 16px auto 0;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.login__switch-text {
+  color: #000000;
+}
+
+.login__switch-button {
+  all: unset;
+  cursor: pointer;
+  color: #2f71e5;
+}
+
+@media screen and (max-width: 510px) {
+  .login {
+    width: 320px;
+    height: 350px;
+  }
+
+  .login__content {
+    margin: 16px;
+  }
+
+  .login__title {
+    margin-bottom: 18px;
+  }
+
+  .login__input {
+    width: 288px;
+  }
+
+  .login__span-error {
+    width: 288px;
+  }
+
+  .login__button {
+    margin-top: 23px;
+    width: 288px;
+  }
+}

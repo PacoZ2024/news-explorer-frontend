@@ -1,5 +1,4 @@
-.savednews {
-  background-color: #000000;
-  font-family: "Inter", Arial, sans-serif;
-  color: #ffffff;
+.saved-news {
+  max-width: 1440px;
+  margin: 0 auto;
 }
