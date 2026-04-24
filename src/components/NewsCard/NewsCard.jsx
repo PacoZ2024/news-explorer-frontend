@@ -10,7 +10,7 @@ export default function NewsCard({ article }) {
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { handleSaveArticle, handleDeleteArticle } =
     useContext(SearchArticleContext);
-  const { urlToImage, publishedAt, title, description, source, keyword } =
+  const { keyword, title, description, publishedAt, source, url, urlToImage } =
     article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
@@ -49,7 +49,15 @@ export default function NewsCard({ article }) {
       handleDeleteArticle(article._id);
     } else {
       setIsSaved(true);
-      handleSaveArticle(article);
+      handleSaveArticle({
+        keyword,
+        title,
+        description,
+        date: formatDate(publishedAt),
+        source: source.name,
+        url,
+        urlToImage,
+      });
     }
   }
 

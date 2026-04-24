@@ -18,11 +18,13 @@ class Api {
 
   saveArticle(articleData) {
     return this._request('articles', 'POST', {
-      urlToImage: articleData.urlToImage,
-      publishedAt: articleData.publishedAt,
+      keyword: articleData.keyword,
       title: articleData.title,
       description: articleData.description,
+      date: articleData.date,
       source: articleData.source,
+      url: articleData.url,
+      urlToImage: articleData.urlToImage,
     });
   }
 
@@ -36,7 +38,10 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://localhost:3000/',
+  baseUrl:
+    import.meta.env.MODE === 'production'
+      ? 'https://api.news-explorer-2026.mooo.com/'
+      : 'http://localhost:3000/',
   headers: {
     'Content-Type': 'application/json',
   },
