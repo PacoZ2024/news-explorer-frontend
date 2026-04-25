@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Login from '../Login/Login.jsx';
+import * as auth from '../../../../utils/auth.js';
 import {
   validateEmail,
   validatePassword,
@@ -53,8 +54,20 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
         );
   }
 
+  async function handleRegister({ email, password, username }) {
+    await auth
+      .register(email, password, username)
+      .then(() => {
+        onOpenPopup(loginPopup);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    handleRegister({ email, password, username });
   }
 
   return (

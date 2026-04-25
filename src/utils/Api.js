@@ -16,6 +16,17 @@ class Api {
     }).then((res) => this._checkResponse(res));
   }
 
+  addAuthorizationToHeader(token) {
+    this._headers = {
+      ...this._headers,
+      Authorization: `Bearer ${token}`,
+    };
+  }
+
+  getUserInfo() {
+    return this._request('users/me');
+  }
+
   saveArticle(articleData) {
     return this._request('articles', 'POST', {
       keyword: articleData.keyword,

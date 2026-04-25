@@ -1,17 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+import { CurrentUserContext } from '../../../../context/CurrentUserContext.js';
+
 import Register from '../Register/Register.jsx';
+import * as auth from '../../../../utils/auth.js';
+import { api } from '../../../../utils/Api.js';
+import { setTokenLocalStorage } from '../../../../utils/token.js';
 import {
   validateEmail,
   validatePassword,
 } from '../../../../utils/validation.js';
 
 export default function Login({ popup, onOpenPopup, onClosePopup }) {
+  const { setIsLoggedIn } = useContext(CurrentUserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [emailMessageError, setEmailMessageError] = useState('');
   const [passwordMessageError, setPasswordMessageError] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
   const registerPopup = {
     children: (
       <Register
@@ -40,8 +50,31 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
         );
   }
 
+  async function handleLogin({ email, password }) {
+    if (!email || !password) {
+      return;
+    }
+    await auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          api.addAuthorizationToHeader(data.token);
+          setTokenLocalStorage(data.token);
+          setIsLoggedIn(true);
+          onClosePopup();
+          const redirectPath = location.state?.from?.pathname || '/';
+          navigate(redirectPath);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoggedIn(false);
+      });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    handleLogin({ email, password });
   }
 
   return (

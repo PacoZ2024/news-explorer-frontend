@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../context/CurrentUserContext.js';
 import { SearchArticleContext } from '../../context/searchArticleContext.js';
@@ -11,11 +11,16 @@ import Footer from '../Footer/Footer.jsx';
 
 import { newsApi } from '../../utils/NewsApi.js';
 import { api } from '../../utils/Api.js';
+import * as auth from '../../utils/auth.js';
+import {
+  getTokenLocalStorage,
+  removeTokenLocalStorage,
+} from '../../utils/token.js';
 
 export default function App() {
   const [popup, setPopup] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [userName, setUserName] = useState('Elise');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState('');
@@ -37,6 +42,8 @@ export default function App() {
     }
     return false;
   });
+
+  const navigate = useNavigate();
 
   async function handleSearch(keyword) {
     if (!keyword.trim()) {
@@ -91,6 +98,14 @@ export default function App() {
       });
   }
 
+  function handleSignOut() {
+    removeTokenLocalStorage();
+    setIsLoggedIn(false);
+    setUserName('');
+    setSavedArticles([]);
+    navigate('/');
+  }
+
   function clearSearch() {
     setHasSearched(false);
     setSearchResults([]);
@@ -107,6 +122,53 @@ export default function App() {
     setPopup(null);
   }
 
+  useEffect(() => {
+    const token = getTokenLocalStorage();
+
+    if (!token) {
+      return;
+    }
+
+    (async () => {
+      await auth
+        .checkToken(token)
+        .then((data) => {
+          api.addAuthorizationToHeader(token);
+          setIsLoggedIn(true);
+          setUserName(data.username);
+        })
+        .catch((err) => {
+          removeTokenLocalStorage();
+          setIsLoggedIn(false);
+          console.error('Token inválido:', err);
+        });
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn)
+      (async () => {
+        await api
+          .getUserInfo()
+          .then((data) => {
+            setUserName(data.username);
+          })
+          .catch((err) => console.err(err));
+      })();
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn)
+      (async () => {
+        await api
+          .getSavedArticles()
+          .then((data) => {
+            setSavedArticles(data);
+          })
+          .catch((err) => console.error(err));
+      })();
+  }, [isLoggedIn]);
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -114,6 +176,7 @@ export default function App() {
         setIsLoggedIn,
         userName,
         setUserName,
+        handleSignOut,
       }}
     >
       <SearchArticleContext.Provider

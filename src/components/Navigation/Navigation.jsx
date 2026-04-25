@@ -17,7 +17,8 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
       />
     ),
   };
-  const { isLoggedIn, userName } = useContext(CurrentUserContext);
+  const { isLoggedIn, userName, handleSignOut } =
+    useContext(CurrentUserContext);
   const [toggledIsOpen, setToggledIsOpen] = useState(false);
   const location = useLocation();
   const wrapperRef = useRef(null);
@@ -68,6 +69,9 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
         {isLoggedIn ? (
           <button
             className={`navigation__button ${location.pathname === '/saved-news' ? 'navigation__button-light' : ''}`}
+            onClick={() => {
+              handleSignOut();
+            }}
           >
             <span className='navigation__button-text'>{userName}</span>
             <div className='navigation__icon-container'>
@@ -119,6 +123,7 @@ export default function Navigation({ popup, onOpenPopup, onClosePopup }) {
                   className='navigation__button'
                   onClick={() => {
                     closeToggled();
+                    handleSignOut();
                   }}
                 >
                   <span className='navigation__button-text'>{userName}</span>
