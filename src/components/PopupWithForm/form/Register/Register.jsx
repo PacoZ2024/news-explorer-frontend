@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Login from '../Login/Login.jsx';
+import InfoTooltip from '../../../InfoTooltip/InfoTooltip.jsx';
 import * as auth from '../../../../utils/auth.js';
 import {
   validateEmail,
@@ -19,6 +20,15 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   const loginPopup = {
     children: (
       <Login
+        popup={popup}
+        onOpenPopup={onOpenPopup}
+        onClosePopup={onClosePopup}
+      />
+    ),
+  };
+  const infoTooltipPopup = {
+    children: (
+      <InfoTooltip
         popup={popup}
         onOpenPopup={onOpenPopup}
         onClosePopup={onClosePopup}
@@ -58,7 +68,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
     await auth
       .register(email, password, username)
       .then(() => {
-        onOpenPopup(loginPopup);
+        onOpenPopup(infoTooltipPopup);
       })
       .catch((err) => {
         console.error(err);
