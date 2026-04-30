@@ -32,10 +32,11 @@ class Api {
       keyword: articleData.keyword,
       title: articleData.title,
       description: articleData.description,
-      date: articleData.date,
+      publishedAt: articleData.publishedAt,
       source: articleData.source,
       url: articleData.url,
       urlToImage: articleData.urlToImage,
+      isSaved: articleData.isSaved,
     });
   }
 

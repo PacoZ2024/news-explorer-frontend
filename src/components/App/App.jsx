@@ -57,10 +57,14 @@ export default function App() {
       .searchNews(keyword)
       .then((data) => {
         setSearchResults(
-          data.articles.map((article) => ({ ...article, keyword })),
+          data.articles.map((article) => ({
+            ...article,
+            keyword,
+            isSaved: 'false',
+          })),
         );
-        localStorage.setItem('searchResults', JSON.stringify(data.articles));
         localStorage.setItem('lastKeyword', keyword);
+        localStorage.setItem('searchResults', JSON.stringify(searchResults));
       })
       .catch((err) => {
         console.error(err);
@@ -77,7 +81,10 @@ export default function App() {
     await api
       .saveArticle(article)
       .then((savedArticle) => {
-        setSavedArticles([...savedArticles, savedArticle]);
+        setSavedArticles([
+          ...savedArticles,
+          { ...savedArticle, isSaved: 'true' },
+        ]);
       })
       .catch((err) => {
         console.error('Error guardando artículo:', err);
@@ -91,7 +98,7 @@ export default function App() {
         setSavedArticles(
           savedArticles.filter((article) => article._id !== articleId),
         );
-        console.log(resp.message);
+        console.log(resp.message, { ...resp.data, isSaved: 'false' });
       })
       .catch((err) => {
         console.error('Error eliminando artículo:', err);
@@ -187,6 +194,7 @@ export default function App() {
           searchError,
           savedArticles,
           clearSearch,
+          setSearchResults,
           handleSearch,
           handleSaveArticle,
           handleDeleteArticle,

@@ -5,9 +5,42 @@ import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
 
 export default function NewsCardList() {
-  const { searchResults, savedArticles } = useContext(SearchArticleContext);
+  const { searchResults, savedArticles, setSearchResults } =
+    useContext(SearchArticleContext);
   const [visibleCards, setVisibleCards] = useState(3);
   const location = useLocation();
+
+  function toggleSave(indexToUpdate) {
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article, index) =>
+        index === indexToUpdate ? { ...article, isSaved: 'true' } : article,
+      ),
+    );
+  }
+
+  function toggleDelete(indexToUpdate) {
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article, index) =>
+        index === indexToUpdate ? { ...article, isSaved: 'false' } : article,
+      ),
+    );
+  }
+
+  function toggleChange(card) {
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article) =>
+        article.description === card.description &&
+        article.keyword === card.keyword &&
+        article.publishedAt === card.publishedAt &&
+        article.source.name === card.source &&
+        article.title === card.title &&
+        article.url === card.url &&
+        article.urlToImage === card.urlToImage
+          ? { ...article, isSaved: 'false' }
+          : article,
+      ),
+    );
+  }
 
   function handleShowMore() {
     setVisibleCards((prev) => prev + 3);
@@ -47,7 +80,13 @@ export default function NewsCardList() {
           )}
           <div className='news-card-list__card-container'>
             {articlesToShow.map((card, index) => (
-              <NewsCard key={`${card.url}-${index}`} article={card} />
+              <NewsCard
+                key={`${card.url}-${index}`}
+                article={card}
+                onToggleSave={() => toggleSave(index)}
+                onToggleDelete={() => toggleDelete(index)}
+                onToggleChange={() => toggleChange(card)}
+              />
             ))}
           </div>
           {showMoreButton && (

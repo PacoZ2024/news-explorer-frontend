@@ -6,15 +6,27 @@ import iconTrash from '../../assets/images/icon-trash.svg';
 import iconSaved from '../../assets/images/icon-saved.svg';
 import iconSavedActive from '../../assets/images/icon-saved-fill.svg';
 
-export default function NewsCard({ article }) {
+export default function NewsCard({
+  article,
+  onToggleSave,
+  onToggleDelete,
+  onToggleChange,
+}) {
   const { isLoggedIn } = useContext(CurrentUserContext);
-  const { handleSaveArticle, handleDeleteArticle } =
+  const { handleSaveArticle, handleDeleteArticle, savedArticles } =
     useContext(SearchArticleContext);
-  const { keyword, title, description, publishedAt, source, url, urlToImage } =
-    article;
+  const {
+    keyword,
+    title,
+    description,
+    publishedAt,
+    source,
+    url,
+    urlToImage,
+    isSaved,
+  } = article;
   const [showTooltip, setShowTooltip] = useState(false);
   const [messageTooltip, setMessageTooltip] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
   const location = useLocation();
 
   function formatDate(dateString) {
@@ -44,26 +56,47 @@ export default function NewsCard({ article }) {
       return;
     }
 
-    if (isSaved) {
-      setIsSaved(false);
-      handleDeleteArticle(article._id);
+    if (isSaved === 'true') {
+      if (article._id) {
+        handleDeleteArticle(article._id);
+        onToggleChange();
+      } else {
+        handleDeleteArticle(searchToDelete());
+        onToggleDelete();
+      }
     } else {
-      setIsSaved(true);
       handleSaveArticle({
         keyword,
         title,
         description,
-        date: formatDate(publishedAt),
+        publishedAt,
         source: source.name,
         url,
         urlToImage,
+        isSaved: 'true',
       });
+      onToggleSave();
     }
+  }
+
+  function searchToDelete() {
+    const articleDelete = savedArticles.find(
+      (art) =>
+        art.keyword === keyword &&
+        art.title === title &&
+        art.description === description &&
+        art.publishedAt === publishedAt &&
+        art.source === source.name &&
+        art.url === url &&
+        art.urlToImage === urlToImage &&
+        art.isSaved === isSaved,
+    );
+    return articleDelete._id;
   }
 
   return (
     <>
-      {location.pathname === '/saved-news' && !isSaved ? (
+      {location.pathname === '/saved-news' && isSaved === 'false' ? (
         <></>
       ) : (
         <div className='news-card'>
@@ -101,7 +134,7 @@ export default function NewsCard({ article }) {
                   }}
                   onMouseLeave={() => setShowTooltip(false)}
                 >
-                  {isSaved && isLoggedIn ? (
+                  {isSaved === 'true' && isLoggedIn ? (
                     <img
                       className='news-card__save-icon news-card__save-icon_active'
                       src={iconSavedActive}
@@ -125,7 +158,9 @@ export default function NewsCard({ article }) {
             <p className='news-card__date'>{formatDate(publishedAt)}</p>
             <h3 className='news-card__title'>{title}</h3>
             <p className='news-card__paragraph'>{description}</p>
-            <p className='news-card__source'>{source.name}</p>
+            <p className='news-card__source'>
+              {location.pathname === '/saved-news' ? source : source.name}
+            </p>
           </div>
         </div>
       )}
