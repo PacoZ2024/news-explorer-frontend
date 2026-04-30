@@ -33,15 +33,24 @@ export default function NewsCardList() {
   }
 
   function toggleChange(card) {
+    const {
+      description,
+      keyword,
+      publishedAt,
+      source,
+      title,
+      url,
+      urlToImage,
+    } = card;
     setSearchResults((prevArticles) =>
       prevArticles.map((article) =>
-        article.description === card.description &&
-        article.keyword === card.keyword &&
-        article.publishedAt === card.publishedAt &&
-        article.source.name === card.source &&
-        article.title === card.title &&
-        article.url === card.url &&
-        article.urlToImage === card.urlToImage
+        article.description === description &&
+        article.keyword === keyword &&
+        article.publishedAt === publishedAt &&
+        article.source.name === source &&
+        article.title === title &&
+        article.url === url &&
+        article.urlToImage === urlToImage
           ? { ...article, isSaved: 'false' }
           : article,
       ),

@@ -75,8 +75,23 @@ export default function NewsCard({
         urlToImage,
         isSaved: 'true',
       });
-      onToggleSave();
+      if (!findArticleInSaved()) {
+        onToggleSave();
+      }
     }
+  }
+
+  function findArticleInSaved() {
+    return savedArticles.some(
+      (art) =>
+        art.keyword === keyword &&
+        art.title === title &&
+        art.description === description &&
+        art.publishedAt === publishedAt &&
+        art.source === source.name &&
+        art.url === url &&
+        art.urlToImage === urlToImage,
+    );
   }
 
   function searchToDelete() {
