@@ -98,7 +98,7 @@ export default function App() {
         setSavedArticles(
           savedArticles.filter((article) => article._id !== articleId),
         );
-        console.log(resp.message, { ...resp.data, isSaved: 'false' });
+        console.log(resp.message);
       })
       .catch((err) => {
         console.error('Error eliminando artículo:', err);

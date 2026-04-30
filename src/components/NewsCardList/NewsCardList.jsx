@@ -9,6 +9,12 @@ export default function NewsCardList() {
     useContext(SearchArticleContext);
   const [visibleCards, setVisibleCards] = useState(3);
   const location = useLocation();
+  const articlesToShow =
+    location.pathname === '/saved-news'
+      ? savedArticles
+      : searchResults.slice(0, visibleCards);
+  const showMoreButton =
+    location.pathname === '/' && visibleCards < searchResults.length;
 
   function toggleSave(indexToUpdate) {
     setSearchResults((prevArticles) =>
@@ -45,14 +51,6 @@ export default function NewsCardList() {
   function handleShowMore() {
     setVisibleCards((prev) => prev + 3);
   }
-
-  const articlesToShow =
-    location.pathname === '/saved-news'
-      ? savedArticles
-      : searchResults.slice(0, visibleCards);
-
-  const showMoreButton =
-    location.pathname === '/' && visibleCards < searchResults.length;
 
   return (
     <section className='news-card-list' id='search-results'>
