@@ -137,6 +137,7 @@ export default function App() {
     setUserName('');
     setSavedArticles([]);
     navigate('/');
+    clearSearch();
   }
 
   function clearSearch() {
