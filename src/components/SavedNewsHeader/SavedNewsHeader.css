@@ -42,6 +42,10 @@
   line-height: 24px;
 }
 
+.saved-news-header__results-themes {
+  margin: 0;
+}
+
 @media screen and (max-width: 768px) {
   .saved-news-header {
     padding-left: 40px;
