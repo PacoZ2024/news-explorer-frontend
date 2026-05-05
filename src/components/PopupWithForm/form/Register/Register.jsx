@@ -60,7 +60,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
     event.target.validity.valid
       ? setUsernameMessageError('')
       : setUsernameMessageError(
-          'El nombre de usuario debe tener entre 2 y 20 caracteres',
+          'El nombre de usuario debe tener entre 2 y 30 caracteres',
         );
   }
 
@@ -109,7 +109,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           type='text'
           autoComplete='username'
           minLength='2'
-          maxLength='20'
+          maxLength='30'
           value={username}
           onChange={handleUsernameChange}
           placeholder='Introduce tu nombre de usuario'

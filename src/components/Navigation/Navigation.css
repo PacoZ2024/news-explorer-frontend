@@ -114,6 +114,7 @@
   }
 
   .navigation__button {
+    max-width: 250px;
     font-size: 16px;
     padding: 8px 15px;
   }
@@ -135,7 +136,7 @@
 
     .navigation__button {
       width: 288px;
-      padding: 15.96px 0;
+      padding: 15.96px 20px;
       justify-content: center;
     }
 
