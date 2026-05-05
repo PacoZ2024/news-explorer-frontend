@@ -33,14 +33,18 @@ export default function App() {
     } catch (error) {
       console.error('Error al inicializar desde localStorage:', error);
       localStorage.removeItem('searchResults');
+      localStorage.removeItem('lastKeyword');
     }
     return [];
   });
   const [hasSearched, setHasSearched] = useState(() => {
-    if (localStorage.getItem('searchResults')) {
+    if (localStorage.getItem('lastKeyword')) {
       return true;
     }
     return false;
+  });
+  const [searchKeyword, setSearchKeyword] = useState(() => {
+    return localStorage.getItem('lastKeyword') || '';
   });
 
   const navigate = useNavigate();
@@ -79,15 +83,14 @@ export default function App() {
     await newsApi
       .searchNews(keyword)
       .then((data) => {
-        setSearchResults(
-          data.articles.map((article) => ({
-            ...article,
-            keyword,
-            isSaved: 'false',
-          })),
-        );
+        const results = data.articles.map((article) => ({
+          ...article,
+          keyword,
+          isSaved: 'false',
+        }));
+        setSearchResults(results);
         localStorage.setItem('lastKeyword', keyword);
-        localStorage.setItem('searchResults', JSON.stringify(searchResults));
+        localStorage.setItem('searchResults', JSON.stringify(results));
       })
       .catch((err) => {
         console.error(err);
@@ -144,6 +147,7 @@ export default function App() {
     setHasSearched(false);
     setSearchResults([]);
     setSearchError('');
+    setSearchKeyword('');
     localStorage.removeItem('searchResults');
     localStorage.removeItem('lastKeyword');
   }
@@ -220,7 +224,9 @@ export default function App() {
           hasSearched,
           searchError,
           savedArticles,
-          clearSearch,
+          searchKeyword,
+          setSearchError,
+          setSearchKeyword,
           setSearchResults,
           handleSearch,
           handleSaveArticle,
