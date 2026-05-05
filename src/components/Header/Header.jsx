@@ -6,6 +6,7 @@ export default function Header({ popup, onOpenPopup, onClosePopup }) {
   return (
     <header
       className={`header ${location.pathname === '/saved-news' ? 'header__light' : ''}`}
+      id='header'
     >
       <div className='header__container'>
         <div className='header__content'>
