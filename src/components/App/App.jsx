@@ -79,7 +79,6 @@ export default function App() {
     }
     setHasSearched(true);
     setIsLoading(true);
-    setSearchError('');
     await newsApi
       .searchNews(keyword)
       .then((data) => {
