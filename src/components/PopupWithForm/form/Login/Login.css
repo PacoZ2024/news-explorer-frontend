@@ -88,6 +88,19 @@
   cursor: pointer;
 }
 
+.login__button:focus-visible {
+  background: #347eff;
+}
+
+.login__button:hover {
+  cursor: pointer;
+  background: #347eff;
+}
+
+.login__button:active {
+  background: #2a65cc;
+}
+
 .login__button:disabled {
   cursor: default;
   background: #e6e8eb;
@@ -110,6 +123,10 @@
   all: unset;
   cursor: pointer;
   color: #2f71e5;
+}
+
+.login__switch-button:focus-visible {
+  color: #0f0bfcda;
 }
 
 @media screen and (max-width: 510px) {

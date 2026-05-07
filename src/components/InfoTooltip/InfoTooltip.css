@@ -27,6 +27,10 @@
   color: #2f71e5;
 }
 
+.info-tooltip__switch-button:focus-visible {
+  color: #0f0bfcda;
+}
+
 @media screen and (max-width: 546px) {
   .info-tooltip__switch {
     max-width: 280px;

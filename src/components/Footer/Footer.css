@@ -45,6 +45,13 @@
   font-size: 18px;
   line-height: 24px;
   color: #1a1b22;
+  outline: none;
+}
+
+.footer__link:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 3px;
+  border-radius: 5px;
 }
 
 .footer__icon-container {
@@ -57,6 +64,13 @@
 .footer__link-icon {
   width: 24px;
   height: 24px;
+  outline: none;
+}
+
+.footer__link-icon:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 3px;
+  border-radius: 5px;
 }
 
 .footer__icon {
