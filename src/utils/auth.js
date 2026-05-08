@@ -29,13 +29,7 @@ export async function authorize(email, password) {
   }).then((res) => {
     return res.ok
       ? res.json()
-      : res.status === 400
-        ? Promise.reject('No se ha proporcionado uno o más campos')
-        : res.status === 401
-          ? Promise.reject(
-              'No se ha encontrado al usuario con el correo electrónico especificado',
-            )
-          : Promise.reject(`Error: ${res.status}`);
+      : Promise.reject('Contraseña o correo electrónico incorrecto');
   });
 }
 

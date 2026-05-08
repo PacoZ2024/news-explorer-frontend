@@ -20,6 +20,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [emailMessageError, setEmailMessageError] = useState('');
   const [passwordMessageError, setPasswordMessageError] = useState('');
+  const [loginMessageError, setLoginMessageError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const registerPopup = {
@@ -33,6 +34,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
   };
 
   function handleEmailChange(event) {
+    setLoginMessageError('');
     setEmail(event.target.value);
     setIsEmailValid(validateEmail(event.target.value));
     validateEmail(event.target.value)
@@ -41,6 +43,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handlePasswordChange(event) {
+    setLoginMessageError('');
     setPassword(event.target.value);
     setIsPasswordValid(validatePassword(event.target.value));
     validatePassword(event.target.value)
@@ -67,8 +70,8 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
         }
       })
       .catch((err) => {
-        console.error(err);
         setIsLoggedIn(false);
+        setLoginMessageError(err);
       });
   }
 
@@ -120,6 +123,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
         >
           Iniciar sesión
         </button>
+        <span className='login__span-error'>{loginMessageError}</span>
         <div className='login__switch'>
           <span className='login__switch-text'>o </span>
           <button
