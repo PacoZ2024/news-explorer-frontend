@@ -9,7 +9,7 @@
 .register__content {
   border: none;
   padding: 0;
-  margin: 34px 35px 28px;
+  margin: 26px 35px;
   display: flex;
   flex-direction: column;
 }
@@ -108,7 +108,7 @@
 }
 
 .register__switch {
-  margin: 16px auto 0;
+  margin: 0 auto;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
@@ -136,7 +136,7 @@
   }
 
   .register__content {
-    margin: 16px;
+    margin: 10px 16px;
   }
 
   .register__title {

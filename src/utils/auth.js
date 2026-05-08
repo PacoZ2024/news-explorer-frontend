@@ -13,9 +13,7 @@ export async function register(email, password, username) {
   }).then((res) => {
     return res.ok
       ? res.json()
-      : res.status === 400
-        ? Promise.reject('Uno de los campos se rellenó de forma incorrecta')
-        : Promise.reject(`Error: ${res.status}`);
+      : Promise.reject('Algo salió mal, por favor inténtalo más tarde');
   });
 }
 

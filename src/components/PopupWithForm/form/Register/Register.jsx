@@ -17,6 +17,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   const [emailMessageError, setEmailMessageError] = useState('');
   const [passwordMessageError, setPasswordMessageError] = useState('');
   const [usernameMessageError, setUsernameMessageError] = useState('');
+  const [registerMessageError, setRegisterMessageError] = useState('');
   const loginPopup = {
     children: (
       <Login
@@ -37,6 +38,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   };
 
   function handleEmailChange(event) {
+    setRegisterMessageError('');
     setEmail(event.target.value);
     setIsEmailValid(validateEmail(event.target.value));
     validateEmail(event.target.value)
@@ -45,6 +47,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handlePasswordChange(event) {
+    setRegisterMessageError('');
     setPassword(event.target.value);
     setIsPasswordValid(validatePassword(event.target.value));
     validatePassword(event.target.value)
@@ -55,6 +58,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handleUsernameChange(event) {
+    setRegisterMessageError('');
     setUsername(event.target.value);
     setIsUsernameValid(event.target.validity.valid);
     event.target.validity.valid
@@ -71,7 +75,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
         onOpenPopup(infoTooltipPopup);
       })
       .catch((err) => {
-        console.error(err);
+        setRegisterMessageError(err);
       });
   }
 
@@ -140,6 +144,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
         >
           Inscribirse
         </button>
+        <span className='register__span-error'>{registerMessageError}</span>
         <div className='register__switch'>
           <span className='register__switch-text'>o </span>
           <button
