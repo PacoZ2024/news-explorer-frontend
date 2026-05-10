@@ -5,6 +5,7 @@ import { SearchArticleContext } from '../../context/searchArticleContext';
 import iconTrash from '../../assets/images/icon-trash.svg';
 import iconSaved from '../../assets/images/icon-saved.svg';
 import iconSavedActive from '../../assets/images/icon-saved-fill.svg';
+import articleWithoutImage from '../../assets/images/article-without-image.png';
 
 export default function NewsCard({
   article,
@@ -30,6 +31,7 @@ export default function NewsCard({
   const location = useLocation();
 
   function formatDate(dateString) {
+    if (dateString === 'Artículo sin fecha') return 'Artículo sin fecha';
     const date = new Date(dateString);
     const months = [
       'enero',
@@ -65,14 +67,21 @@ export default function NewsCard({
         onToggleDelete();
       }
     } else {
+      const safeTitle = title || 'Artículo sin título';
+      const safeDescription = description || 'Artículo sin descripción';
+      const safePublishedAt = publishedAt || 'Artículo sin fecha';
+      const safeSource = source.name || 'Artículo sin fuente';
+      const safeUrl = url || 'https://newsapi.org/';
+      const safeUrlToImage =
+        urlToImage || 'https://libreria.xoc.uam.mx/portadas_art/sinimagen.png';
       handleSaveArticle({
         keyword,
-        title,
-        description,
-        publishedAt,
-        source: source.name,
-        url,
-        urlToImage,
+        title: safeTitle,
+        description: safeDescription,
+        publishedAt: safePublishedAt,
+        source: safeSource,
+        url: safeUrl,
+        urlToImage: safeUrlToImage,
         isSaved: 'true',
       });
       if (!findArticleInSaved()) {
@@ -85,12 +94,16 @@ export default function NewsCard({
     return savedArticles.some(
       (art) =>
         art.keyword === keyword &&
-        art.title === title &&
-        art.description === description &&
-        art.publishedAt === publishedAt &&
-        art.source === source.name &&
-        art.url === url &&
-        art.urlToImage === urlToImage,
+        (art.title === title || art.title === 'Artículo sin título') &&
+        (art.description === description ||
+          art.description === 'Artículo sin descripción') &&
+        (art.publishedAt === publishedAt ||
+          art.publishedAt === 'Artículo sin fecha') &&
+        (art.source === source.name || art.source === 'Artículo sin fuente') &&
+        (art.url === url || art.url === 'https://newsapi.org/') &&
+        (art.urlToImage === urlToImage ||
+          art.urlToImage ===
+            'https://libreria.xoc.uam.mx/portadas_art/sinimagen.png'),
     );
   }
 
@@ -98,12 +111,16 @@ export default function NewsCard({
     const articleDelete = savedArticles.find(
       (art) =>
         art.keyword === keyword &&
-        art.title === title &&
-        art.description === description &&
-        art.publishedAt === publishedAt &&
-        art.source === source.name &&
-        art.url === url &&
-        art.urlToImage === urlToImage &&
+        (art.title === title || art.title === 'Artículo sin título') &&
+        (art.description === description ||
+          art.description === 'Artículo sin descripción') &&
+        (art.publishedAt === publishedAt ||
+          art.publishedAt === 'Artículo sin fecha') &&
+        (art.source === source.name || art.source === 'Artículo sin fuente') &&
+        (art.url === url || art.url === 'https://newsapi.org/') &&
+        (art.urlToImage === urlToImage ||
+          art.urlToImage ===
+            'https://libreria.xoc.uam.mx/portadas_art/sinimagen.png') &&
         art.isSaved === isSaved,
     );
     return articleDelete._id;
@@ -121,7 +138,11 @@ export default function NewsCard({
             ) : (
               <></>
             )}
-            <img className='news-card__image' alt={title} src={urlToImage} />
+            <img
+              className='news-card__image'
+              alt={title}
+              src={urlToImage || articleWithoutImage}
+            />
             <div className='news-card__button-container'>
               {location.pathname === '/saved-news' ? (
                 <button
@@ -170,11 +191,18 @@ export default function NewsCard({
             </div>
           </div>
           <div className='news-card__info'>
-            <p className='news-card__date'>{formatDate(publishedAt)}</p>
-            <h3 className='news-card__title'>{title}</h3>
-            <p className='news-card__paragraph'>{description}</p>
+            <p className='news-card__date'>
+              {formatDate(publishedAt) || 'Artículo sin fecha'}
+            </p>
+            <h3 className='news-card__title'>
+              {title || 'Artículo sin título'}
+            </h3>
+            <p className='news-card__paragraph'>
+              {description || 'Artículo sin descripción'}
+            </p>
             <p className='news-card__source'>
-              {location.pathname === '/saved-news' ? source : source.name}
+              {(location.pathname === '/saved-news' ? source : source.name) ||
+                'Artículo sin fuente'}
             </p>
           </div>
         </div>

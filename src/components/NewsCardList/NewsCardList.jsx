@@ -44,13 +44,13 @@ export default function NewsCardList() {
     } = card;
     setSearchResults((prevArticles) =>
       prevArticles.map((article) =>
-        article.description === description &&
+        (article.description === description || article.description === null) &&
         article.keyword === keyword &&
-        article.publishedAt === publishedAt &&
-        article.source.name === source &&
-        article.title === title &&
-        article.url === url &&
-        article.urlToImage === urlToImage
+        (article.publishedAt === publishedAt || article.publishedAt === null) &&
+        (article.source.name === source || article.source.name === null) &&
+        (article.title === title || article.title === null) &&
+        (article.url === url || article.url === null) &&
+        (article.urlToImage === urlToImage || article.urlToImage === null)
           ? { ...article, isSaved: 'false' }
           : article,
       ),
