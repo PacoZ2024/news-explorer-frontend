@@ -49,29 +49,6 @@ export default function App() {
 
   const navigate = useNavigate();
 
-  function articleIsSavedArticles(article) {
-    const {
-      keyword,
-      title,
-      description,
-      publishedAt,
-      source,
-      url,
-      urlToImage,
-    } = article;
-
-    return savedArticles.some(
-      (art) =>
-        art.keyword === keyword &&
-        art.title === title &&
-        art.description === description &&
-        art.publishedAt === publishedAt &&
-        art.source === source &&
-        art.url === url &&
-        art.urlToImage === urlToImage,
-    );
-  }
-
   async function handleSearch(keyword) {
     if (!keyword.trim()) {
       setSearchError('Por favor, introduzca una palabra clave');
@@ -103,20 +80,17 @@ export default function App() {
   }
 
   async function handleSaveArticle(article) {
-    try {
-      if (articleIsSavedArticles(article)) {
-        throw new Error(
-          'El artículo que tratas de guardar ya existe en tus Artículos Guardados',
-        );
-      }
-      const savedArticle = await api.saveArticle(article);
-      setSavedArticles([
-        ...savedArticles,
-        { ...savedArticle, isSaved: 'true' },
-      ]);
-    } catch (err) {
-      console.error('Error guardando artículo:', err.message);
-    }
+    await api
+      .saveArticle(article)
+      .then((savedArticle) => {
+        setSavedArticles([
+          ...savedArticles,
+          { ...savedArticle, isSaved: 'true' },
+        ]);
+      })
+      .catch((err) => {
+        console.error('Error guardando artículo:', err);
+      });
   }
 
   async function handleDeleteArticle(articleId) {

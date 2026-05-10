@@ -67,24 +67,27 @@ export default function NewsCard({
         onToggleDelete();
       }
     } else {
-      const safeTitle = title || 'Artículo sin título';
-      const safeDescription = description || 'Artículo sin descripción';
-      const safePublishedAt = publishedAt || 'Artículo sin fecha';
-      const safeSource = source.name || 'Artículo sin fuente';
-      const safeUrl = url || 'https://newsapi.org/';
-      const safeUrlToImage =
-        urlToImage || 'https://libreria.xoc.uam.mx/portadas_art/sinimagen.png';
-      handleSaveArticle({
-        keyword,
-        title: safeTitle,
-        description: safeDescription,
-        publishedAt: safePublishedAt,
-        source: safeSource,
-        url: safeUrl,
-        urlToImage: safeUrlToImage,
-        isSaved: 'true',
-      });
-      if (!findArticleInSaved()) {
+      if (findArticleInSaved()) {
+        onToggleSave();
+      } else {
+        const safeTitle = title || 'Artículo sin título';
+        const safeDescription = description || 'Artículo sin descripción';
+        const safePublishedAt = publishedAt || 'Artículo sin fecha';
+        const safeSource = source.name || 'Artículo sin fuente';
+        const safeUrl = url || 'https://newsapi.org/';
+        const safeUrlToImage =
+          urlToImage ||
+          'https://libreria.xoc.uam.mx/portadas_art/sinimagen.png';
+        handleSaveArticle({
+          keyword,
+          title: safeTitle,
+          description: safeDescription,
+          publishedAt: safePublishedAt,
+          source: safeSource,
+          url: safeUrl,
+          urlToImage: safeUrlToImage,
+          isSaved: 'true',
+        });
         onToggleSave();
       }
     }
