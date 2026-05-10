@@ -8,6 +8,7 @@ import Main from '../Main/Main.jsx';
 import Header from '../Header/Header.jsx';
 import SavedNews from '../SavedNews/SavedNews.jsx';
 import Footer from '../Footer/Footer.jsx';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 
 import { newsApi } from '../../utils/NewsApi.js';
 import { api } from '../../utils/Api.js';
@@ -214,7 +215,14 @@ export default function App() {
           />
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/saved-news' element={<SavedNews />} />
+            <Route
+              path='/saved-news'
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedNews />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='*'
               element={
