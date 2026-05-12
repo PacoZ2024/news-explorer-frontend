@@ -9,7 +9,8 @@
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && scp -r ./dist/* pacosclub@news-explorer-2026.mooo.com:/home/pacosclub/frontend"
   },
   "dependencies": {
     "ajv": "^6.12.6",
