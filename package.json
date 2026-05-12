@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Francisco Javier Zepeda Cruz",
+  "homepage": "https://www.news-explorer-2026.mooo.com",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",

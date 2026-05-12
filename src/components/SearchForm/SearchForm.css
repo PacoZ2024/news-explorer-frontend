@@ -88,6 +88,10 @@
   color: inherit;
 }
 
+.search-form__button:focus-visible {
+  background: #347eff;
+}
+
 .search-form__button:hover {
   cursor: pointer;
   background: #347eff;

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Login from '../Login/Login.jsx';
+import InfoTooltip from '../../../InfoTooltip/InfoTooltip.jsx';
+import * as auth from '../../../../utils/auth.js';
 import {
   validateEmail,
   validatePassword,
@@ -15,6 +17,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   const [emailMessageError, setEmailMessageError] = useState('');
   const [passwordMessageError, setPasswordMessageError] = useState('');
   const [usernameMessageError, setUsernameMessageError] = useState('');
+  const [registerMessageError, setRegisterMessageError] = useState('');
   const loginPopup = {
     children: (
       <Login
@@ -24,8 +27,18 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
       />
     ),
   };
+  const infoTooltipPopup = {
+    children: (
+      <InfoTooltip
+        popup={popup}
+        onOpenPopup={onOpenPopup}
+        onClosePopup={onClosePopup}
+      />
+    ),
+  };
 
   function handleEmailChange(event) {
+    setRegisterMessageError('');
     setEmail(event.target.value);
     setIsEmailValid(validateEmail(event.target.value));
     validateEmail(event.target.value)
@@ -34,6 +47,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handlePasswordChange(event) {
+    setRegisterMessageError('');
     setPassword(event.target.value);
     setIsPasswordValid(validatePassword(event.target.value));
     validatePassword(event.target.value)
@@ -44,17 +58,30 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handleUsernameChange(event) {
+    setRegisterMessageError('');
     setUsername(event.target.value);
     setIsUsernameValid(event.target.validity.valid);
     event.target.validity.valid
       ? setUsernameMessageError('')
       : setUsernameMessageError(
-          'El nombre de usuario debe tener entre 2 y 20 caracteres',
+          'El nombre de usuario debe tener entre 2 y 30 caracteres',
         );
+  }
+
+  async function handleRegister({ email, password, username }) {
+    await auth
+      .register(email, password, username)
+      .then(() => {
+        onOpenPopup(infoTooltipPopup);
+      })
+      .catch((err) => {
+        setRegisterMessageError(err);
+      });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    handleRegister({ email, password, username });
   }
 
   return (
@@ -86,7 +113,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
           type='text'
           autoComplete='username'
           minLength='2'
-          maxLength='20'
+          maxLength='30'
           value={username}
           onChange={handleUsernameChange}
           placeholder='Introduce tu nombre de usuario'
@@ -117,6 +144,7 @@ export default function Register({ popup, onOpenPopup, onClosePopup }) {
         >
           Inscribirse
         </button>
+        <span className='register__span-error'>{registerMessageError}</span>
         <div className='register__switch'>
           <span className='register__switch-text'>o </span>
           <button

@@ -59,6 +59,10 @@
   align-items: center;
 }
 
+.news-card__delete-button:focus-visible {
+  border: 2px solid #007bff;
+}
+
 .news-card__delete-button:hover {
   cursor: pointer;
 }
@@ -85,6 +89,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.news-card__save-button:focus-visible {
+  border: 2px solid #007bff;
 }
 
 .news-card__save-button:hover {

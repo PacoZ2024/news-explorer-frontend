@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import closeButton from '../../assets/images/icon-close-popup.svg';
 
 export default function PopupWithForm({ onClosePopup, children }) {
+  const dialogRef = useRef(null);
+
   useEffect(() => {
     function handleEscClose(evt) {
       if (evt.key === 'Escape') {
@@ -26,8 +28,21 @@ export default function PopupWithForm({ onClosePopup, children }) {
     }
   }
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (children) {
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
+  }, [children]);
+
   return (
-    <div className='popup-with-form' onClick={handleOverlayClick}>
+    <dialog
+      ref={dialogRef}
+      className='popup-with-form'
+      onClick={handleOverlayClick}
+    >
       <div className='popup-with-form__content'>
         <button
           className='popup-with-form__close-button'
@@ -41,6 +56,6 @@ export default function PopupWithForm({ onClosePopup, children }) {
         </button>
         {children}
       </div>
-    </div>
+    </dialog>
   );
 }

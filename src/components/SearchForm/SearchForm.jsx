@@ -1,22 +1,26 @@
 import backgroundSearch from '../../assets/images/background-search.jpg';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { SearchArticleContext } from '../../context/searchArticleContext';
 
 export default function SearchForm() {
-  const { searchError, handleSearch, clearSearch } =
-    useContext(SearchArticleContext);
-  const [keyword, setKeyword] = useState('');
+  const {
+    searchError,
+    handleSearch,
+    searchKeyword,
+    setSearchKeyword,
+    setSearchError,
+  } = useContext(SearchArticleContext);
 
   function handleSearchChange(event) {
-    setKeyword(event.target.value);
+    setSearchKeyword(event.target.value);
+    setSearchError('');
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    clearSearch();
-    handleSearch(keyword);
+    handleSearch(searchKeyword);
     setTimeout(() => {
-      if (keyword) {
+      if (searchKeyword) {
         document.getElementById('search-results').scrollIntoView({
           behavior: 'smooth',
           block: 'start',
@@ -51,6 +55,7 @@ export default function SearchForm() {
             type='text'
             className='search-form__form-input'
             placeholder='Introduce un tema'
+            value={searchKeyword}
             onChange={handleSearchChange}
             required
           />

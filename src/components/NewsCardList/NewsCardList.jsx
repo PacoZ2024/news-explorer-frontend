@@ -5,21 +5,61 @@ import notFound from '../../assets/images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard.jsx';
 
 export default function NewsCardList() {
-  const { searchResults, savedArticles } = useContext(SearchArticleContext);
+  const { searchResults, savedArticles, setSearchResults } =
+    useContext(SearchArticleContext);
   const [visibleCards, setVisibleCards] = useState(3);
   const location = useLocation();
-
-  function handleShowMore() {
-    setVisibleCards((prev) => prev + 3);
-  }
-
   const articlesToShow =
     location.pathname === '/saved-news'
       ? savedArticles
       : searchResults.slice(0, visibleCards);
-
   const showMoreButton =
     location.pathname === '/' && visibleCards < searchResults.length;
+
+  function toggleSave(indexToUpdate) {
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article, index) =>
+        index === indexToUpdate ? { ...article, isSaved: 'true' } : article,
+      ),
+    );
+  }
+
+  function toggleDelete(indexToUpdate) {
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article, index) =>
+        index === indexToUpdate ? { ...article, isSaved: 'false' } : article,
+      ),
+    );
+  }
+
+  function toggleChange(card) {
+    const {
+      description,
+      keyword,
+      publishedAt,
+      source,
+      title,
+      url,
+      urlToImage,
+    } = card;
+    setSearchResults((prevArticles) =>
+      prevArticles.map((article) =>
+        (article.description === description || article.description === null) &&
+        article.keyword === keyword &&
+        (article.publishedAt === publishedAt || article.publishedAt === null) &&
+        (article.source.name === source || article.source.name === null) &&
+        (article.title === title || article.title === null) &&
+        (article.url === url || article.url === null) &&
+        (article.urlToImage === urlToImage || article.urlToImage === null)
+          ? { ...article, isSaved: 'false' }
+          : article,
+      ),
+    );
+  }
+
+  function handleShowMore() {
+    setVisibleCards((prev) => prev + 3);
+  }
 
   return (
     <section className='news-card-list' id='search-results'>
@@ -47,7 +87,13 @@ export default function NewsCardList() {
           )}
           <div className='news-card-list__card-container'>
             {articlesToShow.map((card, index) => (
-              <NewsCard key={`${card.url}-${index}`} article={card} />
+              <NewsCard
+                key={`${card.url}-${index}`}
+                article={card}
+                onToggleSave={() => toggleSave(index)}
+                onToggleDelete={() => toggleDelete(index)}
+                onToggleChange={() => toggleChange(card)}
+              />
             ))}
           </div>
           {showMoreButton && (

@@ -9,7 +9,7 @@
 .register__content {
   border: none;
   padding: 0;
-  margin: 34px 35px 28px;
+  margin: 26px 35px;
   display: flex;
   flex-direction: column;
 }
@@ -88,6 +88,19 @@
   cursor: pointer;
 }
 
+.register__button:focus-visible {
+  background: #347eff;
+}
+
+.register__button:hover {
+  cursor: pointer;
+  background: #347eff;
+}
+
+.register__button:active {
+  background: #2a65cc;
+}
+
 .register__button:disabled {
   cursor: default;
   background: #e6e8eb;
@@ -95,7 +108,7 @@
 }
 
 .register__switch {
-  margin: 16px auto 0;
+  margin: 0 auto;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
@@ -112,6 +125,10 @@
   color: #2f71e5;
 }
 
+.register__switch-button:focus-visible {
+  color: #0f0bfcda;
+}
+
 @media screen and (max-width: 510px) {
   .register {
     width: 320px;
@@ -119,7 +136,7 @@
   }
 
   .register__content {
-    margin: 16px;
+    margin: 10px 16px;
   }
 
   .register__title {

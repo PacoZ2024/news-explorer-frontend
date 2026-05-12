@@ -1,0 +1,52 @@
+const BASE_URL =
+  import.meta.env.MODE === 'production'
+    ? 'https://api.news-explorer-2026.mooo.com'
+    : 'http://localhost:3000';
+
+export async function register(email, password, username) {
+  return await fetch(`${BASE_URL}/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password, username }),
+  }).then((res) => {
+    return res.ok
+      ? res.json()
+      : Promise.reject('Algo salió mal, por favor inténtalo más tarde');
+  });
+}
+
+export async function authorize(email, password) {
+  return await fetch(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => {
+    return res.ok
+      ? res.json()
+      : Promise.reject('Contraseña o correo electrónico incorrecto');
+  });
+}
+
+export async function checkToken(token) {
+  return await fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return res.ok
+      ? res.json()
+      : res.status === 400
+        ? Promise.reject(
+            'Token no proporcionado o proporcionado en el formato incorrecto',
+          )
+        : res.status === 401
+          ? Promise.reject('El token provisto es inválido')
+          : Promise.reject(`Error: ${res.status}`);
+  });
+}

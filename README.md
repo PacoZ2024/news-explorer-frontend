@@ -8,3 +8,7 @@ Se implementa el Frontend del proyecto News Explorer que básicamente consiste e
 - JSX
 - CSS
 - React-Vite
+
+### Página del proyecto desplegado
+
+https://www.news-explorer-2026.mooo.com/

@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+import { CurrentUserContext } from '../../../../context/CurrentUserContext.js';
+
 import Register from '../Register/Register.jsx';
+import * as auth from '../../../../utils/auth.js';
+import { api } from '../../../../utils/Api.js';
+import { setTokenLocalStorage } from '../../../../utils/token.js';
 import {
   validateEmail,
   validatePassword,
 } from '../../../../utils/validation.js';
 
 export default function Login({ popup, onOpenPopup, onClosePopup }) {
+  const { setIsLoggedIn } = useContext(CurrentUserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [emailMessageError, setEmailMessageError] = useState('');
   const [passwordMessageError, setPasswordMessageError] = useState('');
+  const [loginMessageError, setLoginMessageError] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
   const registerPopup = {
     children: (
       <Register
@@ -23,6 +34,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
   };
 
   function handleEmailChange(event) {
+    setLoginMessageError('');
     setEmail(event.target.value);
     setIsEmailValid(validateEmail(event.target.value));
     validateEmail(event.target.value)
@@ -31,6 +43,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
   }
 
   function handlePasswordChange(event) {
+    setLoginMessageError('');
     setPassword(event.target.value);
     setIsPasswordValid(validatePassword(event.target.value));
     validatePassword(event.target.value)
@@ -40,8 +53,31 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
         );
   }
 
+  async function handleLogin({ email, password }) {
+    if (!email || !password) {
+      return;
+    }
+    await auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          api.addAuthorizationToHeader(data.token);
+          setTokenLocalStorage(data.token);
+          setIsLoggedIn(true);
+          onClosePopup();
+          const redirectPath = location.state?.from?.pathname || '/';
+          navigate(redirectPath);
+        }
+      })
+      .catch((err) => {
+        setIsLoggedIn(false);
+        setLoginMessageError(err);
+      });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    handleLogin({ email, password });
   }
 
   return (
@@ -87,6 +123,7 @@ export default function Login({ popup, onOpenPopup, onClosePopup }) {
         >
           Iniciar sesión
         </button>
+        <span className='login__span-error'>{loginMessageError}</span>
         <div className='login__switch'>
           <span className='login__switch-text'>o </span>
           <button

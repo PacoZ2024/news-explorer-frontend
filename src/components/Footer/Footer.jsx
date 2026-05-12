@@ -3,6 +3,15 @@ import iconFacebook from '../../assets/images/icon_fb.svg';
 import iconGithub from '../../assets/images/icon_github.svg';
 
 export default function Footer() {
+  function handleSend() {
+    setTimeout(() => {
+      document.getElementById('header').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 1000);
+  }
+
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -12,12 +21,16 @@ export default function Footer() {
           </p>
           <div className='footer__link-content'>
             <div className='footer__link-container'>
-              <Link className='footer__link' to='/'>
+              <Link className='footer__link' to='/' onClick={handleSend}>
                 Inicio
               </Link>
-              <Link className='footer__link' to='/'>
+              <a
+                className='footer__link'
+                href='https://github.com/PacoZ2024/news-explorer-frontend'
+                target='_blank'
+              >
                 Practicum
-              </Link>
+              </a>
             </div>
             <div className='footer__icon-container'>
               <a
