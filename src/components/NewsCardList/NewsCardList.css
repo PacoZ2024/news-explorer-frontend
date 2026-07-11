@@ -49,9 +49,11 @@
   border: 2px solid #007bff;
 }
 
-.news-card-list__button:hover {
-  background: #e8e8e8;
-  cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+  .news-card-list__button:hover {
+    background: #e8e8e8;
+    cursor: pointer;
+  }
 }
 
 .news-card-list__not-found-content {
