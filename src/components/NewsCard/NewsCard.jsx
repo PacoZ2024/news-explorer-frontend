@@ -154,6 +154,9 @@ export default function NewsCard({
                   onMouseEnter={() => {
                     setMessageTooltip('Eliminar de artículos guardados');
                     setShowTooltip(true);
+                    setTimeout(() => {
+                      setShowTooltip(false);
+                    }, 5000);
                   }}
                   onMouseLeave={() => setShowTooltip(false)}
                 >

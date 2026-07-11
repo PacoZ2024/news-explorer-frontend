@@ -74,10 +74,6 @@
   opacity: 0.4;
 }
 
-.news-card__delete-icon:hover {
-  opacity: 1;
-}
-
 .news-card__save-button {
   width: 40px;
   height: 40px;
@@ -104,10 +100,6 @@
   width: 14px;
   height: 19px;
   opacity: 0.4;
-}
-
-.news-card__save-icon:hover {
-  opacity: 1;
 }
 
 .news-card__save-icon_active {
@@ -194,6 +186,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .news-card__delete-icon:hover {
+    opacity: 1;
+  }
+
+  .news-card__save-icon:hover {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 1300px) {
