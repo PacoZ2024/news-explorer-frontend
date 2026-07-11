@@ -78,6 +78,16 @@
   height: 24px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .footer__link:hover {
+    color: #b6bcbf;
+  }
+
+  .footer__icon:hover {
+    filter: invert(73%);
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .footer__container {
     max-width: 1024px;

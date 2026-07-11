@@ -65,11 +65,7 @@
 }
 
 .navigation__button-light {
-  border: 1px solid #d1d2d6;
-}
-
-.navigation__button-light:hover {
-  border-color: #1a1b22;
+  border: 1px solid #1a1b22;
 }
 
 .navigation__button-text {
@@ -112,6 +108,20 @@
 
 .navigation__menu-hamburger-link-container {
   margin-bottom: 21.94px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navigation__link:hover {
+    color: #b6bcbf;
+  }
+
+  .navigation__button:hover {
+    filter: invert(27%);
+  }
+
+  .navigation__button-light:hover {
+    filter: invert(73%);
+  }
 }
 
 @media screen and (max-width: 950px) {
