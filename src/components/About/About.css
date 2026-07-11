@@ -38,6 +38,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+  text-align: justify;
 }
 
 @media screen and (max-width: 1300px) {
@@ -47,6 +48,10 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .about__content {
+    align-items: center;
+  }
+
   .about__image {
     width: 368px;
     height: 368px;

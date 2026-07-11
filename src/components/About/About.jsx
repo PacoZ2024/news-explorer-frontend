@@ -1,4 +1,4 @@
-import aboutAuthor from '../../assets/images/about-author.jpg';
+import aboutAuthor from '../../assets/images/photo-author.jpg';
 
 export default function About() {
   return (
@@ -13,13 +13,20 @@ export default function About() {
           <div className='about__info-container'>
             <h2 className='about__title'>Acerca del autor</h2>
             <p className='about__paragraph'>
-              Este bloque describe al autor del proyecto. Aquí debe indicar tu
-              nombre, a qué te dedicas y qué tecnologías de desarrollo conoces.
+              ¡Hola! Soy <b>Francisco Zepeda</b>. Estudié la licenciatura en
+              Ciencias de la Computación y, recientemente, decidí especializarme
+              como desarrollador web Full Stack.
             </p>
             <p className='about__paragraph'>
-              También puedes hablar de tu experiencia con Practicum, de lo que
-              aprendiste allí y de cómo puedes ayudar a los clientes
-              potenciales.
+              Me apasiona transformar ideas complejas en aplicaciones web
+              modernas, rápidas y fluidas. Para lograrlo, mis herramientas
+              principales son: <b>React</b>, <b>Node.js</b> y <b>JavaScript</b>.
+            </p>
+            <p className='about__paragraph'>
+              Este sitio web es el resultado de mi formación intensiva en
+              <b> TripleTen</b>, un espacio donde perfeccioné el arte de
+              construir aplicaciones robustas, responsivas y completamente desde
+              cero.
             </p>
           </div>
         </div>

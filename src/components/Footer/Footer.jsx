@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import iconFacebook from '../../assets/images/icon_fb.svg';
+import iconLinkedin from '../../assets/images/icon_linkedin.svg';
 import iconGithub from '../../assets/images/icon_github.svg';
 
 export default function Footer() {
@@ -26,16 +26,16 @@ export default function Footer() {
               </Link>
               <a
                 className='footer__link'
-                href='https://github.com/PacoZ2024/news-explorer-frontend'
+                href='https://pacoz2024.github.io/portafolio'
                 target='_blank'
               >
-                Practicum
+                Portafolio
               </a>
             </div>
             <div className='footer__icon-container'>
               <a
                 className='footer__link-icon'
-                href='https://github.com'
+                href='https://github.com/PacoZ2024'
                 target='_blank'
               >
                 <img
@@ -46,13 +46,13 @@ export default function Footer() {
               </a>
               <a
                 className='footer__link-icon'
-                href='https://www.facebook.com'
+                href='https://linkedin.com/in/fcozepedadev'
                 target='_blank'
               >
                 <img
                   className='footer__icon'
                   alt='icono Facebook'
-                  src={iconFacebook}
+                  src={iconLinkedin}
                 />
               </a>
             </div>
