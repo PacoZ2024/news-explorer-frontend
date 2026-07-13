@@ -54,6 +54,10 @@
   border-radius: 5px;
 }
 
+.footer__link:active {
+  color: #b6bcbf;
+}
+
 .footer__icon-container {
   width: 72px;
   height: 24px;
@@ -76,6 +80,10 @@
 .footer__icon {
   width: 24px;
   height: 24px;
+}
+
+.footer__icon:active {
+  filter: invert(73%);
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -92,11 +92,6 @@
   background: #347eff;
 }
 
-.search-form__button:hover {
-  cursor: pointer;
-  background: #347eff;
-}
-
 .search-form__button:active {
   background: #2a65cc;
 }
@@ -108,6 +103,13 @@
   font-size: 12px;
   line-height: 15px;
   color: #ffffff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .search-form__button:hover {
+    cursor: pointer;
+    background: #347eff;
+  }
 }
 
 @media screen and (max-width: 768px) {

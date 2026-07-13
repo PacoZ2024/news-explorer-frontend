@@ -63,15 +63,15 @@
   border: 2px solid #007bff;
 }
 
-.news-card__delete-button:hover {
-  cursor: pointer;
-}
-
 .news-card__delete-icon {
   padding: 8px 8px;
   width: 24px;
   height: 24px;
   opacity: 0.4;
+}
+
+.news-card__delete-icon:active {
+  opacity: 1;
 }
 
 .news-card__save-button {
@@ -91,15 +91,15 @@
   border: 2px solid #007bff;
 }
 
-.news-card__save-button:hover {
-  cursor: pointer;
-}
-
 .news-card__save-icon {
   padding: 10.5px 13px;
   width: 14px;
   height: 19px;
   opacity: 0.4;
+}
+
+.news-card__save-icon:active {
+  opacity: 1;
 }
 
 .news-card__save-icon_active {
@@ -189,6 +189,14 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .news-card__delete-button:hover {
+    cursor: pointer;
+  }
+
+  .news-card__save-button:hover {
+    cursor: pointer;
+  }
+
   .news-card__delete-icon:hover {
     opacity: 1;
   }

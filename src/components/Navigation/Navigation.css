@@ -35,6 +35,10 @@
   outline: none;
 }
 
+.navigation__link:active {
+  color: #b6bcbf;
+}
+
 .navigation__link:focus-visible {
   outline: 2px solid #007bff;
   outline-offset: 3px;
@@ -60,8 +64,8 @@
   border: 2px solid #007bff;
 }
 
-.navigation__button:hover {
-  cursor: pointer;
+.navigation__button:active {
+  filter: invert(27%);
 }
 
 .navigation__button-light {
@@ -116,6 +120,7 @@
   }
 
   .navigation__button:hover {
+    cursor: pointer;
     filter: invert(27%);
   }
 
