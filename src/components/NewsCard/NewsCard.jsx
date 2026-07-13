@@ -61,9 +61,11 @@ export default function NewsCard({
     if (isSaved === 'true') {
       if (article._id) {
         handleDeleteArticle(article._id);
+        setShowTooltip(false);
         onToggleChange();
       } else {
         handleDeleteArticle(searchToDelete());
+        setShowTooltip(false);
         onToggleDelete();
       }
     } else {
@@ -129,6 +131,18 @@ export default function NewsCard({
     return articleDelete._id;
   }
 
+  function handlePointerEnter(e) {
+    if (e.pointerType === 'mouse') {
+      setShowTooltip(true);
+    }
+  }
+
+  function handlePointerLeave(e) {
+    if (e.pointerType === 'mouse') {
+      setShowTooltip(false);
+    }
+  }
+
   return (
     <>
       {location.pathname === '/saved-news' && isSaved === 'false' ? (
@@ -151,11 +165,11 @@ export default function NewsCard({
                 <button
                   className='news-card__delete-button'
                   onClick={handleSaveClick}
-                  onMouseEnter={() => {
+                  onPointerEnter={(e) => {
                     setMessageTooltip('Eliminar de artículos guardados');
-                    isLoggedIn && setShowTooltip(true);
+                    handlePointerEnter(e);
                   }}
-                  onMouseLeave={() => setShowTooltip(false)}
+                  onPointerLeave={handlePointerLeave}
                 >
                   <img
                     className='news-card__delete-icon'
