@@ -19,8 +19,9 @@
 
 <p align="left">
   <a href="https://react.dev" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/524-5245981_react-js-logo-png-transparent-png-download.png" alt="react" width="45" height="45"/> </a>
-  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="css3" width="45" height="45"/> </a>
-  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="javascript" width="45" height="45"/> </a>
+  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/960px-HTML5_logo_and_wordmark.svg.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="html5" width="45" height="45"/> </a>
+  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/486-4864508_css-logo-png-transparent-png.png" alt="css3" width="45" height="45"/> </a>
+  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="javascript" width="45" height="45"/> </a>
 </p>
 
 ---
