@@ -2,7 +2,7 @@
 
 > La interfaz de usuario moderna e interactiva de News Explorer. Una SPA (Single Page Application) construida con React y estilizada con CSS puro desde cero, permitiendo una experiencia de usuario rápida y fluida.
 
-[![Proyecto desplegado en Google Cloud](https://img.shields.io/badge/just%20the%20message-8A2BE2)](https://www.news-explorer-2026.mooo.com/)
+[![Proyecto desplegado](https://img.shields.io/badge/Link%20aplicación%20desplegada-8A2BE2)](https://www.news-explorer-2026.mooo.com/)
 
 ---
 
