@@ -1,14 +1,62 @@
-# Frontend del proyecto News Explorer
+# 🌍 The News Explorer 2026 - Frontend
 
-Se implementa el Frontend del proyecto News Explorer que básicamente consiste en un buscador de artículos de noticias, con la característica de que los usuarios pueden guardar los artículos de su interés dentro de su perfil.
+> La interfaz de usuario moderna e interactiva de News Explorer. Una SPA (Single Page Application) construida con React y estilizada con CSS puro desde cero, permitiendo una experiencia de usuario rápida y fluida.
 
-## Características del proyecto
+[![Desplegado en](https://shields.io)](https://www.news-explorer-2026.mooo.com/)
+[![Repositorio Frontend](https://shields.io)](https://github.com/PacoZ2024/news-explorer-frontend)
 
-- HTML5 semántico
-- JSX
-- CSS
-- React-Vite
+---
 
-### Página del proyecto desplegado
+### ✨ Características del Cliente
 
-https://www.news-explorer-2026.mooo.com/
+- **Diseño a Medida (CSS Puro):** Interfaz limpia, responsiva y maquetada sin librerías externas de estilos (sin Tailwind ni Bootstrap).
+- **Manejo de Sesión (Local Storage):** Persistencia del token JWT en el navegador para mantener la sesión del usuario activa.
+- **Rutas Protegidas:** Implementación de guards en el enrutador para evitar que usuarios no autenticados accedan a secciones privadas (como el panel de marcadores).
+- **Consumo de API:** Comunicación asíncrona con el servidor para búsquedas en tiempo real y gestión de favoritos.
+
+---
+
+### 🛠️ Tecnologías
+
+<p align="left">
+  <a href="https://react.dev" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="react" width="45" height="45"/> </a>
+  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="css3" width="45" height="45"/> </a>
+  <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="javascript" width="45" height="45"/> </a>
+</p>
+
+---
+
+### 🚀 Instalación y Configuración Local
+
+#### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com
+cd news-explorer-frontend
+```
+
+#### 2. Instalar las dependencias
+
+```bash
+npm install
+```
+
+#### 3. Configurar variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto para apuntar a tu servidor local o de producción:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+# Nota: Cambia el prefijo si usas Create React App (REACT_APP_API_URL)
+```
+
+#### 4. Ejecutar el proyecto
+
+```bash
+npm run dev # o npm start
+```
+
+---
+
+> [!IMPORTANT]
+> Este proyecto requiere que el servidor backend esté corriendo de manera simultánea para poder realizar inicios de sesión, registros o guardar noticias.
