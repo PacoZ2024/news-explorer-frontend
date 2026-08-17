@@ -20,7 +20,7 @@
 <p align="left">
   <a href="https://react.dev" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/524-5245981_react-js-logo-png-transparent-png-download.png" alt="react" width="45" height="45"/> </a>
   <a href="https://dev.w3.org/html5/spec-LC/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/960px-HTML5_logo_and_wordmark.svg.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="html5" width="45" height="45"/> </a>
-  <a href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank" rel="noreferrer"> <img src="https://e7.pngegg.com/pngimages/603/759/png-clipart-css3-cascading-style-sheets-logo-html-world-wide-web-blue-angle-thumbnail.png" alt="css3" width="45" height="45"/> </a>
+  <a href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank" rel="noreferrer"> <img src="https://e7.pngegg.com/pngimages/928/759/png-clipart-responsive-web-design-javascript-cascading-style-sheets-html-css3-world-wide-web-blue-angle-thumbnail.png" alt="css3" width="45" height="45"/> </a>
   <a href="https://www.javascript.com" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="javascript" width="45" height="45"/> </a>
 </p>
 
