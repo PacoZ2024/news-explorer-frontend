@@ -18,7 +18,7 @@
 ### 🛠️ Tecnologías
 
 <p align="left">
-  <a href="https://react.dev" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/612-6126558_react-logo-png-react-js-logo-svg-transparent.png" alt="react" width="45" height="45"/> </a>
+  <a href="https://react.dev" target="_blank" rel="noreferrer"> <img src="https://www.vhv.rs/dpng/d/524-5245981_react-js-logo-png-transparent-png-download.png" alt="react" width="45" height="45"/> </a>
   <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="css3" width="45" height="45"/> </a>
   <a href="https://mozilla.org" target="_blank" rel="noreferrer"> <img src="https://githubusercontent.com" alt="javascript" width="45" height="45"/> </a>
 </p>
